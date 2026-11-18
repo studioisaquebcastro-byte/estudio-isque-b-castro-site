@@ -34,3 +34,8 @@ if (motion) { initReveals(); initScrollFX(ctx); if (fine) initCursor(); }
 const refresh = () => window.ScrollTrigger && window.ScrollTrigger.refresh();
 document.fonts && document.fonts.ready.then(refresh);
 addEventListener('load', refresh, { once: true });
+
+// Screening room: only one full film plays at a time
+document.querySelectorAll('.screen video').forEach((v, _, all) => {
+  v.addEventListener('play', () => all.forEach(o => { if (o !== v) o.pause(); }));
+});
