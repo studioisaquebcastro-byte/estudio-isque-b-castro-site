@@ -270,3 +270,25 @@ html.is-locked{overflow:hidden}
 .gallery__grid img{width:100%;height:auto;aspect-ratio:21/9;object-fit:cover;border-radius:14px;transition:transform .6s var(--out),filter .6s var(--out);filter:saturate(.92)}
 .gallery__grid img:hover{transform:scale(1.03);filter:saturate(1.1)}
 @media (prefers-reduced-motion:reduce){.gallery__grid img{transition:none}.gallery__grid img:hover{transform:none}}
+
+/* ── Themes: you pick the theme, we write the story ── */
+.themes{padding:clamp(4.5rem,9vw,9rem) var(--gut);background:var(--cobalt);color:var(--cream);display:grid;gap:clamp(2rem,4vw,4rem)}
+.themes__head{display:grid;gap:1.4rem;align-content:start}
+.themes__lede{font-size:1.2em;line-height:1.4;max-width:32rem}
+.themes__body{display:grid;gap:1.6rem;align-content:start}
+.themes__label{font:700 .95rem/1 var(--display);text-transform:uppercase;letter-spacing:.08em;opacity:.8}
+.themes__chips{display:flex;flex-wrap:wrap;gap:.6rem}
+.tchip{font:600 1rem/1 var(--display);text-decoration:none;padding:.8rem 1.1rem;border:2px solid var(--ink);border-radius:999px;color:var(--ink);background:var(--cream);box-shadow:3px 3px 0 var(--ink);transition:translate .25s var(--ease),box-shadow .25s var(--ease)}
+.tchip--lime{background:var(--lime)}.tchip--pink{background:var(--pink)}.tchip--vermilion{background:var(--vermilion)}.tchip--cobalt{background:var(--cream)}.tchip--ink{background:var(--ink);color:var(--cream);border-color:var(--cream)}
+.tchip:hover{translate:-2px -2px;box-shadow:6px 6px 0 var(--ink)}
+.themes__steps{display:grid;gap:.9rem;counter-reset:st}
+.themes__steps li{counter-increment:st;background:var(--cream);color:var(--ink);border:var(--line);border-radius:18px;padding:1.1rem 1.2rem 1.1rem 3.6rem;position:relative;line-height:1.4}
+.themes__steps li::before{content:counter(st);position:absolute;left:1.1rem;top:.95rem;font:800 1.8rem/1 var(--display)}
+.themes__steps b{display:block;font:700 1.15rem/1.2 var(--display);margin-bottom:.25rem}
+.themes__examples{display:grid;gap:.5rem;border-top:2px solid color-mix(in oklab,var(--cream) 40%,transparent);padding-top:1.2rem}
+.themes__examples p{line-height:1.4}
+.themes__examples span{font:700 .78rem/1 var(--display);text-transform:uppercase;letter-spacing:.08em;background:var(--ink);color:var(--lime);padding:.3rem .5rem;border-radius:6px;margin-right:.35rem;vertical-align:.12em}
+.themes__examples i{font-style:normal;margin:0 .4rem}
+.themes .btn{justify-self:start}
+@media (min-width:900px){.themes{grid-template-columns:minmax(0,.85fr) minmax(0,1fr);align-items:start}.themes__head{position:sticky;top:6rem}}
+@media (prefers-reduced-motion:reduce){.tchip{transition:none}}
