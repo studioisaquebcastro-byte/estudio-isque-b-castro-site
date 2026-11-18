@@ -1,23 +1,74 @@
-// "Start a project" form: composes a mailto: link and a wa.me link with the message prefilled.
-// No backend, nothing stored. Channels that are not configured in /config.js are hidden.
-const isSet = (v) => typeof v === 'string' && v.trim() !== '' && !/YOUR-|example\./i.test(v) && !/^[0\s+-]+$/.test(v);
+// "Start a project" form: saves leads to Firestore and keeps email / WhatsApp / copy as secondary options.
+import { createLead } from './firebase-client.js';
+import { t } from './i18n.js';
+
+const isSet = (v) =>
+  typeof v === 'string' && v.trim() !== '' && !/YOUR-|example\./i.test(v) && !/^[0\s+-]+$/.test(v);
+
+const RATE_LIMIT_KEY = 'eibc-lead-rl';
+const COOLDOWN_MS = 45 * 1000;
+const WINDOW_MS = 10 * 60 * 1000;
+const MAX_PER_WINDOW = 5;
+
+function getRecentSubmissions() {
+  try {
+    const raw = localStorage.getItem(RATE_LIMIT_KEY);
+    if (!raw) return [];
+    const now = Date.now();
+    return JSON.parse(raw).filter((ts) => typeof ts === 'number' && now - ts < WINDOW_MS);
+  } catch {
+    return [];
+  }
+}
+
+function recordSubmission() {
+  try {
+    const recent = getRecentSubmissions();
+    recent.push(Date.now());
+    localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(recent));
+  } catch {
+    // ignore storage failures
+  }
+}
+
+function checkCooldown() {
+  const recent = getRecentSubmissions();
+  if (!recent.length) return null;
+  const now = Date.now();
+  const last = recent[recent.length - 1];
+  if (now - last < COOLDOWN_MS) {
+    const secs = Math.ceil((COOLDOWN_MS - (now - last)) / 1000);
+    return t('contact.cooldownWait', { secs });
+  }
+  if (recent.length >= MAX_PER_WINDOW) {
+    return t('contact.cooldownLimit');
+  }
+  return null;
+}
 
 export function buildMessage(d) {
   return [
-    'Hi Isaac,', '',
-    `Name: ${d.name}`,
-    `Email: ${d.email}`,
-    d.brand ? `Brand / website: ${d.brand}` : null,
-    d.interest ? `Interested in: ${d.interest}` : null,
-    '', d.message, '',
-    'Sent from the Estúdio Isaac B. Castro website',
-  ].filter((l) => l !== null).join('\n');
+    t('msg.greeting'),
+    '',
+    `${t('msg.name')}: ${d.name}`,
+    `${t('msg.email')}: ${d.email}`,
+    d.whatsapp ? `${t('msg.whatsapp')}: ${d.whatsapp}` : null,
+    d.brand ? `${t('msg.brand')}: ${d.brand}` : null,
+    d.interest ? `${t('msg.interest')}: ${d.interest}` : null,
+    '',
+    d.message,
+    '',
+    t('msg.footer'),
+  ]
+    .filter((l) => l !== null)
+    .join('\n');
 }
+
 export function buildLinks(site, d) {
   const text = buildMessage(d);
   const email = isSet(site.email) ? site.email.trim() : '';
   const wa = isSet(site.whatsapp) ? site.whatsapp.replace(/\D/g, '') : '';
-  const subject = `${site.emailSubject || 'New project enquiry'}: ${d.brand || d.name}`;
+  const subject = `${t('msg.subject') || site.emailSubject}: ${d.brand || d.name}`;
   return {
     text,
     mailto: email ? `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}` : '',
@@ -25,76 +76,252 @@ export function buildLinks(site, d) {
   };
 }
 
+function openExternalLink(href) {
+  const a = document.createElement('a');
+  a.href = href;
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
+  document.body.append(a);
+  a.click();
+  a.remove();
+}
+
 export function initForms(site) {
   const form = document.getElementById('project-form');
   if (!form) return;
+
   const note = document.getElementById('form-note');
-  const bEmail = document.getElementById('send-email'), bWa = document.getElementById('send-whatsapp'), bCopy = document.getElementById('copy-message');
+  const confirmEl = document.getElementById('form-confirm');
+  const bSubmit = document.getElementById('send-request');
+  const bEmail = document.getElementById('send-email');
+  const bWa = document.getElementById('send-whatsapp');
+  const bCopy = document.getElementById('copy-message');
   const interestEl = document.getElementById('form-interest');
-  const hasEmail = isSet(site.email), hasWa = isSet(site.whatsapp);
-  let interest = '';
-
-  bEmail.hidden = !hasEmail; bWa.hidden = !hasWa;
-  if (!hasEmail && !hasWa) {
-    bCopy.hidden = false;
-    note.textContent = 'Direct sending is not set up on this site yet. Write your message, copy it, and send it through the channel where you found us.';
-  }
-
-  // contact links (only the ones that are configured)
   const links = document.getElementById('contact-links');
-  const add = (labelText, text, href) => {
-    const li = document.createElement('li'), s = document.createElement('span'), a = document.createElement('a');
-    s.textContent = labelText; a.textContent = text; a.href = href;
-    if (/^https?:/.test(href)) { a.target = '_blank'; a.rel = 'noopener'; }
-    li.append(s, a); links.append(li);
+
+  const hasEmail = isSet(site.email);
+  const hasWa = isSet(site.whatsapp);
+  let interest = '';
+  let activePrefillEl = null;
+  let lastSubmitted = null;
+  let noteKey = 'contact.noteInitial';
+  let isSubmitting = false;
+
+  bEmail.hidden = !hasEmail;
+  bWa.hidden = !hasWa;
+  bCopy.hidden = false;
+
+  const setNote = (key, explicitText) => {
+    noteKey = key || '';
+    note.textContent = explicitText ?? t(key);
   };
-  if (hasEmail) add('Email', site.email.trim(), `mailto:${site.email.trim()}`);
-  if (hasWa) add('WhatsApp', 'Message us on WhatsApp', `https://wa.me/${site.whatsapp.replace(/\D/g, '')}`);
-  if (isSet(site.instagram)) {
-    const ig = site.instagram.trim(), handle = ig.replace(/^https?:\/\/(www\.)?instagram\.com\//i, '').replace(/^@/, '').replace(/\/.*$/, '');
-    add('Instagram', '@' + handle, `https://www.instagram.com/${encodeURIComponent(handle)}/`);
-  }
-  links.hidden = !links.children.length;
 
-  // "Request a quote" buttons on service cards carry the service into the form
-  document.querySelectorAll('[data-prefill]').forEach((b) => b.addEventListener('click', () => {
-    interest = b.dataset.prefill; interestEl.textContent = 'Quote for: ' + interest; interestEl.hidden = false;
-  }));
+  const renderLinks = () => {
+    links.replaceChildren();
+    const add = (labelText, text, href) => {
+      const li = document.createElement('li');
+      const s = document.createElement('span');
+      const a = document.createElement('a');
+      s.textContent = labelText;
+      a.textContent = text;
+      a.href = href;
+      if (/^https?:/.test(href)) {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      }
+      li.append(s, a);
+      links.append(li);
+    };
+    if (hasEmail) add(t('contact.linkEmail'), site.email.trim(), `mailto:${site.email.trim()}`);
+    if (hasWa) add(t('contact.linkWa'), t('contact.linkWaText'), `https://wa.me/${site.whatsapp.replace(/\D/g, '')}`);
+    if (isSet(site.instagram)) {
+      const ig = site.instagram.trim();
+      const handle = ig
+        .replace(/^https?:\/\/(www\.)?instagram\.com\//i, '')
+        .replace(/^@/, '')
+        .replace(/\/.*$/, '');
+      add(t('contact.linkIg'), '@' + handle, `https://www.instagram.com/${encodeURIComponent(handle)}/`);
+    }
+    links.hidden = !links.children.length;
+  };
+  renderLinks();
 
-  const fields = { name: form.elements.name, email: form.elements.email, message: form.elements.message };
+  const renderInterest = () => {
+    if (activePrefillEl) {
+      interest = (activePrefillEl.dataset.prefill || '').trim().slice(0, 200);
+    }
+    interestEl.textContent = interest ? t('contact.quotePrefix') + interest : '';
+    interestEl.hidden = !interest;
+  };
+
+  // "Request a quote" / theme chips carry the selection into the form
+  document.querySelectorAll('[data-prefill]').forEach((b) =>
+    b.addEventListener('click', () => {
+      activePrefillEl = b;
+      renderInterest();
+    }),
+  );
+
+  document.addEventListener('cc:langchange', () => {
+    renderLinks();
+    if (interest) renderInterest();
+    if (isSubmitting) bSubmit.textContent = t('contact.sending');
+    else bSubmit.textContent = t('contact.submit');
+    if (!confirmEl.hidden) confirmEl.textContent = t('contact.confirmSuccess');
+    if (noteKey) note.textContent = t(noteKey);
+  });
+
+  const fields = {
+    name: form.elements.name,
+    email: form.elements.email,
+    whatsapp: form.elements.whatsapp,
+    message: form.elements.message,
+  };
+
   const valid = {
-    name: (v) => v.trim().length > 1,
-    email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
-    message: (v) => v.trim().length > 5,
+    name: (v) => v.trim().length >= 2 && v.trim().length <= 120,
+    email: (v) => v.trim().length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+    whatsapp: (v) => {
+      const val = v.trim();
+      if (!val) return true;
+      const digits = val.replace(/\D/g, '');
+      return val.length <= 32 && digits.length >= 7 && digits.length <= 15;
+    },
+    message: (v) => v.trim().length >= 6 && v.trim().length <= 4000,
   };
+
   const check = (k) => {
-    const ok = valid[k](fields[k].value), err = document.getElementById('e-' + k);
+    const ok = valid[k](fields[k].value);
+    const err = document.getElementById('e-' + k);
     fields[k].setAttribute('aria-invalid', ok ? 'false' : 'true');
-    ok ? fields[k].removeAttribute('aria-describedby') : fields[k].setAttribute('aria-describedby', 'e-' + k);
-    err.hidden = ok; return ok;
+    if (ok) fields[k].removeAttribute('aria-describedby');
+    else fields[k].setAttribute('aria-describedby', 'e-' + k);
+    if (err) err.hidden = ok;
+    return ok;
   };
-  Object.keys(fields).forEach((k) => fields[k].addEventListener('input', () => { if (fields[k].getAttribute('aria-invalid') === 'true') check(k); }));
 
-  const collect = () => {
+  Object.keys(fields).forEach((k) =>
+    fields[k].addEventListener('input', () => {
+      if (fields[k].getAttribute('aria-invalid') === 'true') check(k);
+    }),
+  );
+
+  const readValues = () => ({
+    name: fields.name.value.trim().slice(0, 120),
+    email: fields.email.value.trim().slice(0, 254),
+    whatsapp: fields.whatsapp.value.trim().slice(0, 32),
+    brand: form.elements.brand.value.trim().slice(0, 160),
+    message: fields.message.value.trim().slice(0, 4000),
+    interest: interest.slice(0, 200),
+  });
+
+  const collect = (allowLast = false) => {
+    const hasAnyInput =
+      fields.name.value.trim() ||
+      fields.email.value.trim() ||
+      fields.whatsapp.value.trim() ||
+      fields.message.value.trim();
+    if (!hasAnyInput && allowLast && lastSubmitted) {
+      return lastSubmitted;
+    }
     const bad = Object.keys(fields).filter((k) => !check(k));
-    if (bad.length) { fields[bad[0]].focus(); note.textContent = 'Check the highlighted fields, then send again.'; return null; }
-    return buildLinks(site, { name: fields.name.value.trim(), email: fields.email.value.trim(), brand: form.elements.brand.value.trim(), message: fields.message.value.trim(), interest });
+    if (bad.length) {
+      fields[bad[0]].focus();
+      setNote('contact.noteInvalid');
+      return null;
+    }
+    return readValues();
   };
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const links = collect(); if (!links) return;
-    const channel = (e.submitter && e.submitter.dataset.channel) || (hasEmail ? 'email' : 'whatsapp');
-    const href = channel === 'whatsapp' ? links.whatsapp : links.mailto;
-    if (!href) return;
-    form.dataset.lastHref = href; // handy for QA
-    if (channel === 'whatsapp') { window.open(href, '_blank', 'noopener'); note.textContent = 'WhatsApp opened in a new tab with your message ready. Press send there.'; }
-    else { window.location.href = href; note.textContent = 'Your email app should open with the message ready. Press send there.'; }
+    confirmEl.hidden = true;
+
+    const hp = form.elements.website_hp ? form.elements.website_hp.value.trim() : '';
+    if (hp) {
+      // Honeypot triggered: pretend success without writing to Firestore.
+      confirmEl.textContent = t('contact.confirmSuccess');
+      confirmEl.hidden = false;
+      form.reset();
+      return;
+    }
+
+    const data = collect(false);
+    if (!data) return;
+
+    const cooldownMsg = checkCooldown();
+    if (cooldownMsg) {
+      setNote('', cooldownMsg);
+      return;
+    }
+
+    isSubmitting = true;
+    bSubmit.disabled = true;
+    bSubmit.textContent = t('contact.sending');
+
+    try {
+      await createLead({
+        name: data.name,
+        email: data.email,
+        whatsapp: data.whatsapp,
+        brand: data.brand,
+        theme: data.interest,
+        message: data.message,
+      });
+
+      recordSubmission();
+      lastSubmitted = data;
+
+      confirmEl.textContent = t('contact.confirmSuccess');
+      confirmEl.hidden = false;
+      setNote('contact.noteAfterSuccess');
+
+      form.reset();
+      Object.keys(fields).forEach((k) => {
+        fields[k].setAttribute('aria-invalid', 'false');
+        fields[k].removeAttribute('aria-describedby');
+        const err = document.getElementById('e-' + k);
+        if (err) err.hidden = true;
+      });
+    } catch (err) {
+      console.error('Failed to submit lead:', err);
+      setNote('contact.noteSubmitErr');
+    } finally {
+      isSubmitting = false;
+      bSubmit.disabled = false;
+      bSubmit.textContent = t('contact.submit');
+    }
+  });
+
+  bEmail.addEventListener('click', () => {
+    const data = collect(true);
+    if (!data) return;
+    const built = buildLinks(site, data);
+    if (!built.mailto) return;
+    form.dataset.lastHref = built.mailto;
+    window.location.href = built.mailto;
+    setNote('contact.noteEmailOpened');
+  });
+
+  bWa.addEventListener('click', () => {
+    const data = collect(true);
+    if (!data) return;
+    const built = buildLinks(site, data);
+    if (!built.whatsapp) return;
+    form.dataset.lastHref = built.whatsapp;
+    openExternalLink(built.whatsapp);
+    setNote('contact.noteWaOpened');
   });
 
   bCopy.addEventListener('click', async () => {
-    const links = collect(); if (!links) return;
-    try { await navigator.clipboard.writeText(links.text); note.textContent = 'Message copied.'; }
-    catch (err) { note.textContent = 'Copy failed. Select the text in the form and copy it by hand.'; }
+    const data = collect(true);
+    if (!data) return;
+    const built = buildLinks(site, data);
+    try {
+      await navigator.clipboard.writeText(built.text);
+      setNote('contact.noteCopied');
+    } catch {
+      setNote('contact.noteCopyErr');
+    }
   });
 }

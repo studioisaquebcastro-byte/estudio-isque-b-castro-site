@@ -1,4 +1,6 @@
 // Fullscreen film player on a native <dialog>: showModal() gives the focus trap, Esc-to-close and inert page.
+import { t } from './i18n.js';
+
 export function initPlayer({ motion, lenis }) {
   const dlg = document.getElementById('player');
   const video = document.getElementById('player-video');
@@ -11,7 +13,7 @@ export function initPlayer({ motion, lenis }) {
     trigger = from;
     const slug = film.dataset.slug;
     title.textContent = film.dataset.title;
-    meta.textContent = film.dataset.meta + ' · Concept film';
+    meta.textContent = film.dataset.meta + t('player.conceptSuffix');
     video.poster = `/assets/img/${slug}-poster.webp`;
     video.src = `/assets/video/${slug}.mp4`; // the full film (with sound) is requested only now
     const show = () => {

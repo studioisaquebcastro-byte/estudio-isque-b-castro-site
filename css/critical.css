@@ -11,6 +11,7 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:5rem;overflow-x:clip}
+html.i18n-pending body{visibility:hidden}
 body{margin:0;background:var(--cream);color:var(--ink);font:400 clamp(1.06rem,.98rem + .3vw,1.3rem)/1.5 var(--text);-webkit-font-smoothing:antialiased;overflow-x:clip}
 h1,h2,h3,p,ul,ol,figure{margin:0}ul,ol{padding:0;list-style:none}
 img,video,canvas{display:block;max-width:100%;height:auto}
@@ -39,15 +40,21 @@ a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}
 .chip--nav{background:var(--cream);gap:0;padding:0 .35rem;display:none}
 .chip--nav a{text-decoration:none;padding:.55rem .8rem;border-radius:999px;transition:background-color .2s}
 .chip--nav a:hover{background:var(--lime)}
-.site-header__end{display:flex;gap:.5rem}
+.site-header__end{display:flex;align-items:center;gap:.5rem}
+.chip--lang{background:var(--cream);padding:0 .3rem;gap:.1rem}
+.chip--lang button{background:transparent;border:0;border-radius:999px;padding:.45rem .55rem;font:700 .78rem/1 var(--display);letter-spacing:.02em;transition:background-color .2s,color .2s}
+.chip--lang button:hover{background:var(--lime)}
+.chip--lang button[aria-pressed="true"]{background:var(--ink);color:var(--cream)}
 .chip--cta{background:var(--lime);display:none}
 .chip--menu{background:var(--cream)}
 .chip--menu__bars{display:grid;gap:5px;width:18px}
 .chip--menu__bars i{height:2px;background:var(--ink);transition:transform .35s var(--ease)}
 [aria-expanded=true] .chip--menu__bars i:first-child{transform:translateY(3.5px) rotate(45deg)}
 [aria-expanded=true] .chip--menu__bars i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+@media (max-width:479px){.site-header{gap:.35rem}.site-header .chip{height:2.5rem;padding:0 .7rem;font-size:.82rem}.site-header .chip--brand{gap:.4rem}.site-header .chip__dot{width:.55rem;height:.55rem}.site-header .chip--lang{padding:0 .2rem;gap:.04rem}.site-header .chip--lang button{padding:.36rem .38rem;font-size:.7rem}.site-header .chip--menu{gap:.4rem}.site-header .chip--menu__bars{width:15px}}
 @media (min-width:560px){.chip--cta{display:inline-flex}}
 @media (min-width:1000px){.chip--nav{display:inline-flex}.chip--menu{display:none}}
+@media (min-width:1000px) and (max-width:1200px){.site-header .chip{font-size:.86rem;padding:0 .82rem}.chip--nav{padding:0 .25rem}.chip--nav a{padding:.5rem .56rem}.chip--lang{padding:0 .22rem}.chip--lang button{padding:.42rem .45rem;font-size:.74rem}}
 .menu[hidden]{display:none}
 
 /* preloader: pure CSS (counter via @property), so it can never get stuck if JS fails */

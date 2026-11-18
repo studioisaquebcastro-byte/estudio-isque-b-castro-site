@@ -3,24 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Estúdio Isaac B. Castro — Cinematic AI video ads that make people feel something</title>
-<meta name="description" content="Estúdio Isaac B. Castro makes cinematic, emotional AI video ads for brands and sets up the Meta campaigns that run them. Three ads per package, delivered in 48 hours.">
+<title>Castro Creative — AI marketing agency: video ads, product photos, websites and social posts</title>
+<meta name="description" content="Castro Creative is an AI marketing agency. We make cinematic video ads, product and brand photos, websites and social posts, then set up the Meta campaigns that put them in front of people.">
 <!-- TODO owner: replace https://YOUR-DOMAIN.com with the live domain (here, in robots.txt and sitemap.xml) -->
 <link rel="canonical" href="https://YOUR-DOMAIN.com/">
 <meta name="theme-color" content="#FBF1DE">
 <meta name="color-scheme" content="light">
 
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Estúdio Isaac B. Castro">
-<meta property="og:title" content="Estúdio Isaac B. Castro — Ads that make people feel something">
+<meta property="og:site_name" content="Castro Creative">
+<meta property="og:title" content="Castro Creative — AI marketing that makes people feel something">
 <meta property="og:description" content="Cinematic AI video ads for brands, plus Meta campaign setup. Three ads per package, delivered in 48 hours.">
 <meta property="og:url" content="https://YOUR-DOMAIN.com/">
 <meta property="og:image" content="https://YOUR-DOMAIN.com/assets/img/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Estúdio Isaac B. Castro — Ads that make people feel something">
+<meta property="og:image:alt" content="Castro Creative — AI marketing that makes people feel something">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Estúdio Isaac B. Castro — Ads that make people feel something">
+<meta name="twitter:title" content="Castro Creative — AI marketing that makes people feel something">
 <meta name="twitter:description" content="Cinematic AI video ads for brands, plus Meta campaign setup. Three ads per package, delivered in 48 hours.">
 <meta name="twitter:image" content="https://YOUR-DOMAIN.com/assets/img/og-image.jpg">
 
@@ -37,16 +37,35 @@
       imagesizes="(max-width: 899px) 92vw, 40vw">
 
 <script>
-/* Runs before first paint: decides motion / preloader so the first frame is already in its final layout. */
+/* Runs before first paint: decides language, motion / preloader so the first frame is already in its final layout. */
 (function (d) {
-  var c = d.documentElement.classList, reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, seen = false;
+  var html = d.documentElement, c = html.classList, reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, seen = false, lang = 'en';
+  try {
+    var saved = localStorage.getItem('cc-lang');
+    if (saved === 'pt' || saved === 'en' || saved === 'es') lang = saved;
+    else {
+      var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
+      for (var i = 0; i < list.length; i++) {
+        var l = String(list[i] || '').toLowerCase();
+        if (l.indexOf('pt') === 0) { lang = 'pt'; break; }
+        if (l.indexOf('es') === 0) { lang = 'es'; break; }
+        if (l.indexOf('en') === 0) { lang = 'en'; break; }
+      }
+    }
+  } catch (e) {}
+  html.lang = lang;
+  html.dataset.lang = lang;
+  if (lang !== 'en') {
+    c.add('i18n-pending');
+    setTimeout(function () { c.remove('i18n-pending'); }, 800);
+  }
   try { seen = sessionStorage.getItem('eibc-seen') === '1'; } catch (e) {}
   c.add('js');
   if (!reduce) { c.add('motion'); if (!seen) c.add('preload'); }
 })(document);
 </script>
 
-<!--critical:start--><style>@font-face{font-family:"Bricolage";src:url(/assets/fonts/bricolage-grotesque.woff2) format("woff2");font-weight:200 800;font-stretch:75% 100%;font-display:swap}@font-face{font-family:"Newsreader";src:url(/assets/fonts/newsreader.woff2) format("woff2");font-weight:200 800;font-display:swap}@property --n{syntax:"<integer>";inherits:false;initial-value:0}@property --p{syntax:"<number>";inherits:true;initial-value:0}:root{--cream:#FBF1DE;--ink:#15110E;--vermilion:#FF4321;--cobalt:#2340FF;--lime:#D6FF3D;--pink:#FF5CA8;--display:"Bricolage","Arial Narrow",Impact,sans-serif;--text:"Newsreader",Georgia,"Times New Roman",serif;--gut:clamp(1rem,3.2vw,3.5rem);--ease:cubic-bezier(.2,.8,.2,1);--out:cubic-bezier(.16,1,.3,1);--hard:4px 4px 0 var(--ink);--line:2px solid var(--ink);}*,*::before,*::after{box-sizing:border-box}html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:5rem;overflow-x:clip}body{margin:0;background:var(--cream);color:var(--ink);font:400 clamp(1.06rem,.98rem + .3vw,1.3rem)/1.5 var(--text);-webkit-font-smoothing:antialiased;overflow-x:clip}h1,h2,h3,p,ul,ol,figure{margin:0}ul,ol{padding:0;list-style:none}img,video,canvas{display:block;max-width:100%;height:auto}a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:6px}.skip{position:fixed;left:1rem;top:-5rem;z-index:200;background:var(--ink);color:var(--cream);padding:.7rem 1rem;border-radius:999px;font:600 1rem var(--display)}.skip:focus{top:1rem}.display{font:800 clamp(3rem,9.4vw,10.5rem)/.88 var(--display);font-stretch:75%;letter-spacing:-.02em;text-wrap:balance}.btn,.chip{font:600 1rem/1 var(--display);text-decoration:none;display:inline-flex;align-items:center;gap:.55rem;border:var(--line);border-radius:999px;white-space:nowrap}.btn{padding:1.02rem 1.5rem;box-shadow:var(--hard);transition:translate .25s var(--ease),box-shadow .25s var(--ease),background-color .25s}.btn:hover{translate:-2px -2px;box-shadow:7px 7px 0 var(--ink)}.btn:active{translate:2px 2px;box-shadow:1px 1px 0 var(--ink)}.btn--ink{background:var(--ink);color:var(--cream);box-shadow:4px 4px 0 var(--vermilion)}.btn--ink:hover{box-shadow:7px 7px 0 var(--vermilion)}.btn--ghost{background:transparent}.btn--ghost:hover{background:var(--lime)}.btn--lime{background:var(--lime);color:var(--ink)}.btn--cream{background:var(--cream);color:var(--ink)}.site-header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:.6rem;padding:.9rem var(--gut);pointer-events:none}.site-header>*{pointer-events:auto}.chip{height:2.9rem;padding:0 1.05rem;font-size:.95rem}.chip--brand{background:var(--ink);color:var(--cream);border-color:var(--cream);font-weight:700;letter-spacing:-.01em}.chip__dot{width:.7rem;height:.7rem;border-radius:50%;background:var(--vermilion);flex:none}.chip--nav{background:var(--cream);gap:0;padding:0 .35rem;display:none}.chip--nav a{text-decoration:none;padding:.55rem .8rem;border-radius:999px;transition:background-color .2s}.chip--nav a:hover{background:var(--lime)}.site-header__end{display:flex;gap:.5rem}.chip--cta{background:var(--lime);display:none}.chip--menu{background:var(--cream)}.chip--menu__bars{display:grid;gap:5px;width:18px}.chip--menu__bars i{height:2px;background:var(--ink);transition:transform .35s var(--ease)}[aria-expanded=true] .chip--menu__bars i:first-child{transform:translateY(3.5px) rotate(45deg)}[aria-expanded=true] .chip--menu__bars i:last-child{transform:translateY(-3.5px) rotate(-45deg)}@media (min-width:560px){.chip--cta{display:inline-flex}}@media (min-width:1000px){.chip--nav{display:inline-flex}.chip--menu{display:none}}.menu[hidden]{display:none}.preloader{display:none}.preload .preloader{display:grid;position:fixed;inset:0;z-index:100;background:var(--vermilion);color:var(--ink);grid-template-rows:auto 1fr auto;padding:1.2rem var(--gut);font:700 1rem var(--display);animation:pl-out .65s cubic-bezier(.7,0,.2,1) .95s forwards}.preloader__count{align-self:end;font:800 min(46vw,62vh)/.8 var(--display);font-stretch:75%;letter-spacing:-.04em;margin-left:-.04em}.preloader__count span{font-size:0}.preloader__count::after{counter-reset:n var(--n);content:counter(n);animation:pl-count .9s cubic-bezier(.3,0,.2,1) forwards}.preloader__line{padding-top:.6rem;border-top:var(--line)}@keyframes pl-count{to{--n:100}}@keyframes pl-out{to{transform:translateY(-101%);visibility:hidden}}.hero__stage{--p:0;position:relative;padding:6.2rem var(--gut) 2.5rem;display:grid;gap:1.6rem}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.hero__title{white-space:nowrap;font:800 clamp(3rem,17.2vw,9rem)/.86 var(--display);font-stretch:75%;letter-spacing:-.025em}.hero__line{display:block;overflow:clip;overflow-clip-margin:.06em;padding-block:.07em;margin-block:-.07em}.hero__line>span{display:inline-block}.hero__copy{max-width:31rem;display:grid;gap:1.3rem}.hero__lede strong{font-family:var(--display);font-weight:700;letter-spacing:-.01em}.hero__actions{display:flex;flex-wrap:wrap;gap:.8rem}.hero__frame{position:relative;aspect-ratio:16/9;border-radius:22px;overflow:hidden;border:var(--line);background:var(--ink);rotate:-1.5deg;margin-top:1rem;box-shadow:8px 8px 0 var(--cobalt)}.hero__poster,.hero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.hero__video{opacity:0;transition:opacity .6s}.hero__video.is-on{opacity:1}.hero__tag{position:absolute;left:.8rem;bottom:.8rem;background:var(--cream);border:var(--line);border-radius:999px;padding:.35rem .7rem;font:600 .8rem var(--display)}.hero__cue{display:none}.sticker{position:absolute;z-index:3;pointer-events:none;font-family:var(--display)}.sticker--48{right:var(--gut);top:5.4rem;width:clamp(5.6rem,24vw,8.5rem);aspect-ratio:1;background:var(--lime);border:var(--line);border-radius:50%;display:grid;place-items:center;rotate:10deg}.sticker__ring{position:absolute;inset:0;animation:spin 22s linear infinite}.sticker__ring text{font:700 17.5px var(--display);letter-spacing:.02em;fill:var(--ink)}.sticker--48 b{font:800 clamp(1.7rem,7vw,2.6rem)/1 var(--display);font-stretch:75%}.sticker--pack{display:none;background:var(--pink);border:var(--line);border-radius:999px;padding:.6rem 1rem;font-weight:700;font-size:1rem;rotate:-7deg;box-shadow:var(--hard)}@media (max-width:899px){.sticker--48{top:auto;bottom:calc((100vw - 2*var(--gut))*.5625 - .6rem);right:calc(var(--gut) + .4rem)}}@keyframes spin{to{transform:rotate(360deg)}}.sticker__ring{transform-origin:50% 50%}html:not(.motion) .sticker__ring{animation:none}.motion .hero__line>span{animation:line-in 1s var(--out) both;animation-delay:calc(var(--d0,.05s) + var(--i,0)*.09s)}.preload .hero__line>span{--d0:1.15s}.hero__line--2{--i:1}.hero__line--3{--i:2}@keyframes line-in{from{transform:translateY(112%) rotate(4deg);font-weight:200}to{transform:none;font-weight:800}}.motion .hero__copy,.motion .hero__frame,.motion .sticker{animation:pop .9s var(--out) backwards;animation-delay:calc(var(--d0,.05s) + .35s)}.preload .hero__copy,.preload .hero__frame,.preload .sticker{--d0:1.15s}@keyframes pop{from{scale:.86}to{scale:1}}@media (min-width:900px){.hero__title{font-size:min(13.4vw,23.5vh)}.motion .hero{height:230vh}.motion .hero__stage{position:sticky;top:0;height:100vh;height:100svh;display:block;padding:0;overflow:clip;background:color-mix(in oklab,var(--ink) calc(clamp(0,(var(--p) - .35)*2.2,1)*100%),var(--cream))}.motion .hero__title{position:absolute;left:var(--gut);top:max(5.4rem,9vh);opacity:calc(1 - var(--p)*2.4)}.motion .hero__line{will-change:transform;transform:translateX(calc(var(--p)*var(--dir,-1)*38vw))}.motion .hero__line--2{--dir:1}.motion .hero__copy{position:absolute;left:var(--gut);bottom:clamp(1.6rem,5vh,3.2rem);opacity:calc(1 - var(--p)*3);translate:0 calc(var(--p)*6vh)}.motion .hero__frame{--fs:.37;--fx:27.5vw;--fy:22vh;position:absolute;left:0;top:50%;width:100vw;margin:0;aspect-ratio:21/9;max-height:100svh;rotate:none;box-shadow:none;border-width:calc(2px*(1 - var(--p))/var(--fs));border-radius:calc(54px*(1 - var(--p)));will-change:transform;transform:translate(calc(var(--fx)*(1 - var(--p))),calc(-50% + var(--fy)*(1 - var(--p)))) rotate(calc(-4deg*(1 - var(--p)) + var(--skew,0deg))) scale(calc(var(--fs) + (1 - var(--fs))*var(--p)))}.motion .hero__tag{font-size:calc(.8rem/var(--fs));left:calc(.8rem/var(--fs));bottom:calc(.8rem/var(--fs));padding:.35em .7em;border-width:calc(2px/var(--fs));opacity:calc(1 - var(--p)*4)}.motion .sticker{opacity:calc(1 - var(--p)*4)}.motion .sticker--48{right:7vw;top:13vh;width:clamp(7.5rem,11vw,11rem)}.motion .sticker--pack{display:block;left:80vw;top:47vh}.motion .hero__cue{display:flex;align-items:center;gap:.6rem;position:absolute;right:var(--gut);bottom:1.4rem;font:600 .9rem var(--display);opacity:calc(1 - var(--p)*6)}.hero__cue i{width:2px;height:2.2rem;background:var(--ink);transform-origin:top;animation:cue 1.8s var(--ease) infinite}html:not(.motion) .hero__stage{grid-template-columns:1fr 1fr;align-items:end;padding-top:7rem}html:not(.motion) .hero__title{grid-column:1/-1}}@keyframes cue{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}</style><!--critical:end-->
+<!--critical:start--><style>@font-face{font-family:"Bricolage";src:url(/assets/fonts/bricolage-grotesque.woff2) format("woff2");font-weight:200 800;font-stretch:75% 100%;font-display:swap}@font-face{font-family:"Newsreader";src:url(/assets/fonts/newsreader.woff2) format("woff2");font-weight:200 800;font-display:swap}@property --n{syntax:"<integer>";inherits:false;initial-value:0}@property --p{syntax:"<number>";inherits:true;initial-value:0}:root{--cream:#FBF1DE;--ink:#15110E;--vermilion:#FF4321;--cobalt:#2340FF;--lime:#D6FF3D;--pink:#FF5CA8;--display:"Bricolage","Arial Narrow",Impact,sans-serif;--text:"Newsreader",Georgia,"Times New Roman",serif;--gut:clamp(1rem,3.2vw,3.5rem);--ease:cubic-bezier(.2,.8,.2,1);--out:cubic-bezier(.16,1,.3,1);--hard:4px 4px 0 var(--ink);--line:2px solid var(--ink);}*,*::before,*::after{box-sizing:border-box}html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:5rem;overflow-x:clip}html.i18n-pending body{visibility:hidden}body{margin:0;background:var(--cream);color:var(--ink);font:400 clamp(1.06rem,.98rem + .3vw,1.3rem)/1.5 var(--text);-webkit-font-smoothing:antialiased;overflow-x:clip}h1,h2,h3,p,ul,ol,figure{margin:0}ul,ol{padding:0;list-style:none}img,video,canvas{display:block;max-width:100%;height:auto}a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:6px}.skip{position:fixed;left:1rem;top:-5rem;z-index:200;background:var(--ink);color:var(--cream);padding:.7rem 1rem;border-radius:999px;font:600 1rem var(--display)}.skip:focus{top:1rem}.display{font:800 clamp(3rem,9.4vw,10.5rem)/.88 var(--display);font-stretch:75%;letter-spacing:-.02em;text-wrap:balance}.btn,.chip{font:600 1rem/1 var(--display);text-decoration:none;display:inline-flex;align-items:center;gap:.55rem;border:var(--line);border-radius:999px;white-space:nowrap}.btn{padding:1.02rem 1.5rem;box-shadow:var(--hard);transition:translate .25s var(--ease),box-shadow .25s var(--ease),background-color .25s}.btn:hover{translate:-2px -2px;box-shadow:7px 7px 0 var(--ink)}.btn:active{translate:2px 2px;box-shadow:1px 1px 0 var(--ink)}.btn--ink{background:var(--ink);color:var(--cream);box-shadow:4px 4px 0 var(--vermilion)}.btn--ink:hover{box-shadow:7px 7px 0 var(--vermilion)}.btn--ghost{background:transparent}.btn--ghost:hover{background:var(--lime)}.btn--lime{background:var(--lime);color:var(--ink)}.btn--cream{background:var(--cream);color:var(--ink)}.site-header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:.6rem;padding:.9rem var(--gut);pointer-events:none}.site-header>*{pointer-events:auto}.chip{height:2.9rem;padding:0 1.05rem;font-size:.95rem}.chip--brand{background:var(--ink);color:var(--cream);border-color:var(--cream);font-weight:700;letter-spacing:-.01em}.chip__dot{width:.7rem;height:.7rem;border-radius:50%;background:var(--vermilion);flex:none}.chip--nav{background:var(--cream);gap:0;padding:0 .35rem;display:none}.chip--nav a{text-decoration:none;padding:.55rem .8rem;border-radius:999px;transition:background-color .2s}.chip--nav a:hover{background:var(--lime)}.site-header__end{display:flex;align-items:center;gap:.5rem}.chip--lang{background:var(--cream);padding:0 .3rem;gap:.1rem}.chip--lang button{background:transparent;border:0;border-radius:999px;padding:.45rem .55rem;font:700 .78rem/1 var(--display);letter-spacing:.02em;transition:background-color .2s,color .2s}.chip--lang button:hover{background:var(--lime)}.chip--lang button[aria-pressed="true"]{background:var(--ink);color:var(--cream)}.chip--cta{background:var(--lime);display:none}.chip--menu{background:var(--cream)}.chip--menu__bars{display:grid;gap:5px;width:18px}.chip--menu__bars i{height:2px;background:var(--ink);transition:transform .35s var(--ease)}[aria-expanded=true] .chip--menu__bars i:first-child{transform:translateY(3.5px) rotate(45deg)}[aria-expanded=true] .chip--menu__bars i:last-child{transform:translateY(-3.5px) rotate(-45deg)}@media (max-width:479px){.site-header{gap:.35rem}.site-header .chip{height:2.5rem;padding:0 .7rem;font-size:.82rem}.site-header .chip--brand{gap:.4rem}.site-header .chip__dot{width:.55rem;height:.55rem}.site-header .chip--lang{padding:0 .2rem;gap:.04rem}.site-header .chip--lang button{padding:.36rem .38rem;font-size:.7rem}.site-header .chip--menu{gap:.4rem}.site-header .chip--menu__bars{width:15px}}@media (min-width:560px){.chip--cta{display:inline-flex}}@media (min-width:1000px){.chip--nav{display:inline-flex}.chip--menu{display:none}}@media (min-width:1000px) and (max-width:1200px){.site-header .chip{font-size:.86rem;padding:0 .82rem}.chip--nav{padding:0 .25rem}.chip--nav a{padding:.5rem .56rem}.chip--lang{padding:0 .22rem}.chip--lang button{padding:.42rem .45rem;font-size:.74rem}}.menu[hidden]{display:none}.preloader{display:none}.preload .preloader{display:grid;position:fixed;inset:0;z-index:100;background:var(--vermilion);color:var(--ink);grid-template-rows:auto 1fr auto;padding:1.2rem var(--gut);font:700 1rem var(--display);animation:pl-out .65s cubic-bezier(.7,0,.2,1) .95s forwards}.preloader__count{align-self:end;font:800 min(46vw,62vh)/.8 var(--display);font-stretch:75%;letter-spacing:-.04em;margin-left:-.04em}.preloader__count span{font-size:0}.preloader__count::after{counter-reset:n var(--n);content:counter(n);animation:pl-count .9s cubic-bezier(.3,0,.2,1) forwards}.preloader__line{padding-top:.6rem;border-top:var(--line)}@keyframes pl-count{to{--n:100}}@keyframes pl-out{to{transform:translateY(-101%);visibility:hidden}}.hero__stage{--p:0;position:relative;padding:6.2rem var(--gut) 2.5rem;display:grid;gap:1.6rem}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.hero__title{white-space:nowrap;font:800 clamp(3rem,17.2vw,9rem)/.86 var(--display);font-stretch:75%;letter-spacing:-.025em}.hero__line{display:block;overflow:clip;overflow-clip-margin:.06em;padding-block:.07em;margin-block:-.07em}.hero__line>span{display:inline-block}.hero__copy{max-width:31rem;display:grid;gap:1.3rem}.hero__lede strong{font-family:var(--display);font-weight:700;letter-spacing:-.01em}.hero__actions{display:flex;flex-wrap:wrap;gap:.8rem}.hero__frame{position:relative;aspect-ratio:16/9;border-radius:22px;overflow:hidden;border:var(--line);background:var(--ink);rotate:-1.5deg;margin-top:1rem;box-shadow:8px 8px 0 var(--cobalt)}.hero__poster,.hero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.hero__video{opacity:0;transition:opacity .6s}.hero__video.is-on{opacity:1}.hero__tag{position:absolute;left:.8rem;bottom:.8rem;background:var(--cream);border:var(--line);border-radius:999px;padding:.35rem .7rem;font:600 .8rem var(--display)}.hero__cue{display:none}.sticker{position:absolute;z-index:3;pointer-events:none;font-family:var(--display)}.sticker--48{right:var(--gut);top:5.4rem;width:clamp(5.6rem,24vw,8.5rem);aspect-ratio:1;background:var(--lime);border:var(--line);border-radius:50%;display:grid;place-items:center;rotate:10deg}.sticker__ring{position:absolute;inset:0;animation:spin 22s linear infinite}.sticker__ring text{font:700 17.5px var(--display);letter-spacing:.02em;fill:var(--ink)}.sticker--48 b{font:800 clamp(1.7rem,7vw,2.6rem)/1 var(--display);font-stretch:75%}.sticker--pack{display:none;background:var(--pink);border:var(--line);border-radius:999px;padding:.6rem 1rem;font-weight:700;font-size:1rem;rotate:-7deg;box-shadow:var(--hard)}@media (max-width:899px){.sticker--48{top:auto;bottom:calc((100vw - 2*var(--gut))*.5625 - .6rem);right:calc(var(--gut) + .4rem)}}@keyframes spin{to{transform:rotate(360deg)}}.sticker__ring{transform-origin:50% 50%}html:not(.motion) .sticker__ring{animation:none}.motion .hero__line>span{animation:line-in 1s var(--out) both;animation-delay:calc(var(--d0,.05s) + var(--i,0)*.09s)}.preload .hero__line>span{--d0:1.15s}.hero__line--2{--i:1}.hero__line--3{--i:2}@keyframes line-in{from{transform:translateY(112%) rotate(4deg);font-weight:200}to{transform:none;font-weight:800}}.motion .hero__copy,.motion .hero__frame,.motion .sticker{animation:pop .9s var(--out) backwards;animation-delay:calc(var(--d0,.05s) + .35s)}.preload .hero__copy,.preload .hero__frame,.preload .sticker{--d0:1.15s}@keyframes pop{from{scale:.86}to{scale:1}}@media (min-width:900px){.hero__title{font-size:min(13.4vw,23.5vh)}.motion .hero{height:230vh}.motion .hero__stage{position:sticky;top:0;height:100vh;height:100svh;display:block;padding:0;overflow:clip;background:color-mix(in oklab,var(--ink) calc(clamp(0,(var(--p) - .35)*2.2,1)*100%),var(--cream))}.motion .hero__title{position:absolute;left:var(--gut);top:max(5.4rem,9vh);opacity:calc(1 - var(--p)*2.4)}.motion .hero__line{will-change:transform;transform:translateX(calc(var(--p)*var(--dir,-1)*38vw))}.motion .hero__line--2{--dir:1}.motion .hero__copy{position:absolute;left:var(--gut);bottom:clamp(1.6rem,5vh,3.2rem);opacity:calc(1 - var(--p)*3);translate:0 calc(var(--p)*6vh)}.motion .hero__frame{--fs:.37;--fx:27.5vw;--fy:22vh;position:absolute;left:0;top:50%;width:100vw;margin:0;aspect-ratio:21/9;max-height:100svh;rotate:none;box-shadow:none;border-width:calc(2px*(1 - var(--p))/var(--fs));border-radius:calc(54px*(1 - var(--p)));will-change:transform;transform:translate(calc(var(--fx)*(1 - var(--p))),calc(-50% + var(--fy)*(1 - var(--p)))) rotate(calc(-4deg*(1 - var(--p)) + var(--skew,0deg))) scale(calc(var(--fs) + (1 - var(--fs))*var(--p)))}.motion .hero__tag{font-size:calc(.8rem/var(--fs));left:calc(.8rem/var(--fs));bottom:calc(.8rem/var(--fs));padding:.35em .7em;border-width:calc(2px/var(--fs));opacity:calc(1 - var(--p)*4)}.motion .sticker{opacity:calc(1 - var(--p)*4)}.motion .sticker--48{right:7vw;top:13vh;width:clamp(7.5rem,11vw,11rem)}.motion .sticker--pack{display:block;left:80vw;top:47vh}.motion .hero__cue{display:flex;align-items:center;gap:.6rem;position:absolute;right:var(--gut);bottom:1.4rem;font:600 .9rem var(--display);opacity:calc(1 - var(--p)*6)}.hero__cue i{width:2px;height:2.2rem;background:var(--ink);transform-origin:top;animation:cue 1.8s var(--ease) infinite}html:not(.motion) .hero__stage{grid-template-columns:1fr 1fr;align-items:end;padding-top:7rem}html:not(.motion) .hero__title{grid-column:1/-1}}@keyframes cue{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}</style><!--critical:end-->
 <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
 
@@ -54,11 +73,11 @@
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "Estúdio Isaac B. Castro",
+  "name": "Castro Creative",
   "url": "https://YOUR-DOMAIN.com/",
   "image": "https://YOUR-DOMAIN.com/assets/img/og-image.jpg",
-  "description": "Cinematic AI video ads for brands and Meta (Facebook and Instagram) campaign setup.",
-  "founder": { "@type": "Person", "name": "Isaac B. Castro", "jobTitle": "Paid traffic specialist" },
+  "description": "Castro Creative is an AI marketing agency. We make cinematic video ads, product and brand photos, websites and social posts, then set up the Meta campaigns that put them in front of people.",
+  "founder": { "@type": "Person", "name": "Isaque B. Castro", "jobTitle": "Paid traffic specialist" },
   "address": { "@type": "PostalAddress", "addressCountry": "PT" },
   "areaServed": ["US", "GB", "EU"],
   "knowsAbout": ["AI video advertising", "Meta Ads", "Video production", "Creative testing"],
@@ -75,55 +94,65 @@
 <script type="module" src="/js/main.js"></script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 
 <div class="preloader" id="preloader" aria-hidden="true">
-  <p class="preloader__name">Estúdio Isaac B. Castro</p>
+  <p class="preloader__name">Castro Creative</p>
   <p class="preloader__count"><span id="preloader-count">0</span></p>
-  <p class="preloader__line">Loading the feelings</p>
+  <p class="preloader__line" data-i18n="preloader.line">Loading the feelings</p>
 </div>
 
 <div class="progress" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
-<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label">Play</span></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label" data-i18n="cursor.play">Play</span></div>
 
 <header class="site-header" id="top">
-  <a class="chip chip--brand" href="#top" aria-label="Estúdio Isaac B. Castro — back to top">
+  <a class="chip chip--brand" href="#top" aria-label="Castro Creative — back to top" data-i18n-aria="nav.topAria">
     <span class="chip__dot" aria-hidden="true"></span>
-    <span>Estúdio Isaac B. Castro</span>
+    <span>Castro Creative</span>
   </a>
-  <nav class="chip chip--nav" aria-label="Primary">
-    <a href="#work">Work</a>
-    <a href="#films">Films</a>
-    <a href="#themes">Your theme</a>
-    <a href="#services">Services</a>
-    <a href="#process">Process</a>
-    <a href="#studio">Studio</a>
-    <a href="#contact">Contact</a>
+  <nav class="chip chip--nav" aria-label="Primary" data-i18n-aria="nav.primaryAria">
+    <a href="#work" data-i18n="nav.work">Work</a>
+    <a href="#films" data-i18n="nav.films">Films</a>
+    <a href="#themes" data-i18n="nav.themes">Your theme</a>
+    <a href="#services" data-i18n="nav.services">Services</a>
+    <a href="#process" data-i18n="nav.process">Process</a>
+    <a href="#studio" data-i18n="nav.about">About</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
   </nav>
   <div class="site-header__end">
-    <a class="chip chip--cta" href="#contact" data-magnetic>Request a quote</a>
+    <div class="chip chip--lang" role="group" aria-label="Language" data-i18n-aria="lang.aria">
+      <button type="button" data-set-lang="pt" aria-pressed="false">PT</button>
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+    </div>
+    <a class="chip chip--cta" href="#contact" data-magnetic data-i18n="nav.cta">Request a quote</a>
     <button class="chip chip--menu" id="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
       <span class="chip--menu__bars" aria-hidden="true"><i></i><i></i></span>
-      <span class="chip--menu__text">Menu</span>
+      <span class="chip--menu__text" data-i18n="nav.menu">Menu</span>
     </button>
   </div>
 </header>
 
 <div class="menu" id="menu" hidden>
-  <nav class="menu__nav" aria-label="Mobile">
-    <a href="#work"><span>Work</span></a>
-    <a href="#films"><span>Films</span></a>
-    <a href="#brands"><span>Brands</span></a>
-    <a href="#themes"><span>Your theme</span></a>
-    <a href="#services"><span>Services</span></a>
-    <a href="#process"><span>Process</span></a>
-    <a href="#studio"><span>Studio</span></a>
-    <a href="#contact"><span>Contact</span></a>
+  <nav class="menu__nav" aria-label="Mobile" data-i18n-aria="nav.mobileAria">
+    <a href="#work"><span data-i18n="nav.work">Work</span></a>
+    <a href="#films"><span data-i18n="nav.films">Films</span></a>
+    <a href="#brands"><span data-i18n="nav.brands">Brands</span></a>
+    <a href="#themes"><span data-i18n="nav.themes">Your theme</span></a>
+    <a href="#services"><span data-i18n="nav.services">Services</span></a>
+    <a href="#process"><span data-i18n="nav.process">Process</span></a>
+    <a href="#studio"><span data-i18n="nav.about">About</span></a>
+    <a href="#contact"><span data-i18n="nav.contact">Contact</span></a>
   </nav>
   <div class="menu__foot">
-    <a class="btn btn--lime" href="#contact">Request a quote</a>
-    <p>Estúdio Isaac B. Castro<br>AI video ads and Meta campaign setup</p>
+    <div class="menu__lang" role="group" aria-label="Language" data-i18n-aria="lang.aria">
+      <button type="button" data-set-lang="pt" aria-pressed="false">PT</button>
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+    </div>
+    <a class="btn btn--lime" href="#contact" data-i18n="nav.cta">Request a quote</a>
+    <p data-i18n-html="menu.foot">Castro Creative<br>AI video ads and Meta campaign setup</p>
   </div>
 </div>
 
@@ -132,57 +161,57 @@
 <!-- ───────────── HERO ───────────── -->
 <section class="hero" id="hero" aria-labelledby="hero-title">
   <div class="hero__stage">
-    <h1 class="hero__title" id="hero-title" aria-label="Ads that make people feel something.">
-      <span class="hero__line hero__line--1" aria-hidden="true"><span>Ads that make</span></span>
-      <span class="hero__line hero__line--2" aria-hidden="true"><span>people feel</span></span>
-      <span class="hero__line hero__line--3" aria-hidden="true"><span>something.</span></span>
+    <h1 class="hero__title" id="hero-title" aria-label="Ads that make people feel something." data-i18n-aria="hero.titleAria">
+      <span class="hero__line hero__line--1" aria-hidden="true"><span data-i18n="hero.line1">Ads that make</span></span>
+      <span class="hero__line hero__line--2" aria-hidden="true"><span data-i18n="hero.line2">people feel</span></span>
+      <span class="hero__line hero__line--3" aria-hidden="true"><span data-i18n="hero.line3">something.</span></span>
     </h1>
 
     <div class="hero__copy">
-      <p class="hero__lede"><strong>Estúdio Isaac B. Castro</strong> makes cinematic AI video ads for brands, then sets up the Meta campaigns that put them in front of people.</p>
+      <p class="hero__lede" data-i18n-html="hero.lede"><strong>Castro Creative</strong> is an AI marketing agency. We make video ads, product photos, websites and social posts for brands, then set up the Meta campaigns that put them in front of people.</p>
       <div class="hero__actions">
-        <a class="btn btn--ink" href="#contact" data-magnetic>Request a quote</a>
-        <a class="btn btn--ghost" href="#work" data-magnetic>Watch the films</a>
+        <a class="btn btn--ink" href="#contact" data-magnetic data-i18n="hero.cta1">Request a quote</a>
+        <a class="btn btn--ghost" href="#work" data-magnetic data-i18n="hero.cta2">Watch the films</a>
       </div>
     </div>
 
     <div class="sticker sticker--48" aria-hidden="true">
-      <svg viewBox="0 0 200 200" class="sticker__ring"><defs><path id="ring" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#ring" textLength="486">Delivered in 48 hours ✺ Delivered in 48 hours ✺</textPath></text></svg>
+      <svg viewBox="0 0 200 200" class="sticker__ring"><defs><path id="ring" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#ring" textLength="486" data-i18n="hero.ring">Delivered in 48 hours ✺ Delivered in 48 hours ✺</textPath></text></svg>
       <b>48h</b>
     </div>
-    <p class="sticker sticker--pack" aria-hidden="true">3 ads per package</p>
+    <p class="sticker sticker--pack" aria-hidden="true" data-i18n="hero.pack">Video · Photo · Web · Social</p>
 
     <div class="hero__frame" id="hero-frame">
       <img class="hero__poster" src="/assets/img/showreel-poster.webp"
            srcset="/assets/img/showreel-poster-sm.webp 640w, /assets/img/showreel-poster.webp 1280w"
            sizes="(max-width: 899px) 92vw, 40vw"
-           width="1280" height="548" alt="Showreel: a dog running along a beach at sunset, from one of the studio's concept films" fetchpriority="high" decoding="async">
+           width="1280" height="548" alt="Showreel: a dog running along a beach at sunset, from one of the studio's concept films" data-i18n-alt="hero.posterAlt" fetchpriority="high" decoding="async">
       <video class="hero__video" id="hero-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"
              width="1280" height="548"
              data-src="/assets/video/showreel.mp4" data-src-sm="/assets/video/showreel-sm.mp4"></video>
-      <span class="hero__tag">Showreel · concept films</span>
+      <span class="hero__tag" data-i18n="hero.tag">Showreel · concept films</span>
     </div>
 
-    <p class="hero__cue" aria-hidden="true"><i></i>Scroll</p>
+    <p class="hero__cue" aria-hidden="true"><i></i><span data-i18n="hero.cue">Scroll</span></p>
   </div>
 </section>
 
 <!-- ───────────── MARQUEE ───────────── -->
 <div class="ribbons" aria-hidden="true">
   <div class="ribbon ribbon--a"><div class="ribbon__track">
-    <span>AI video ads</span><i>✺</i><span>Meta campaign setup</span><i>✺</i><span>48-hour delivery</span><i>✺</i><span>Story first</span><i>✺</i><span>Product second</span><i>✺</i>
-    <span>AI video ads</span><i>✺</i><span>Meta campaign setup</span><i>✺</i><span>48-hour delivery</span><i>✺</i><span>Story first</span><i>✺</i><span>Product second</span><i>✺</i>
+    <span data-i18n="ribbon.a1">AI video ads</span><i>✺</i><span data-i18n="ribbon.a2">Meta campaign setup</span><i>✺</i><span data-i18n="ribbon.a3">48-hour delivery</span><i>✺</i><span data-i18n="ribbon.a4">Story first</span><i>✺</i><span data-i18n="ribbon.a5">Product second</span><i>✺</i>
+    <span data-i18n="ribbon.a1">AI video ads</span><i>✺</i><span data-i18n="ribbon.a2">Meta campaign setup</span><i>✺</i><span data-i18n="ribbon.a3">48-hour delivery</span><i>✺</i><span data-i18n="ribbon.a4">Story first</span><i>✺</i><span data-i18n="ribbon.a5">Product second</span><i>✺</i>
   </div></div>
   <div class="ribbon ribbon--b"><div class="ribbon__track">
-    <span>Consistent characters</span><i>●</i><span>Product close-ups</span><i>●</i><span>Sound design</span><i>●</i><span>9:16</span><i>●</i><span>1:1</span><i>●</i><span>21:9</span><i>●</i><span>One revision included</span><i>●</i>
-    <span>Consistent characters</span><i>●</i><span>Product close-ups</span><i>●</i><span>Sound design</span><i>●</i><span>9:16</span><i>●</i><span>1:1</span><i>●</i><span>21:9</span><i>●</i><span>One revision included</span><i>●</i>
+    <span data-i18n="ribbon.b1">Consistent characters</span><i>●</i><span data-i18n="ribbon.b2">Product close-ups</span><i>●</i><span data-i18n="ribbon.b3">Sound design</span><i>●</i><span data-i18n="ribbon.b4">9:16</span><i>●</i><span data-i18n="ribbon.b5">1:1</span><i>●</i><span data-i18n="ribbon.b6">21:9</span><i>●</i><span data-i18n="ribbon.b7">One revision included</span><i>●</i>
+    <span data-i18n="ribbon.b1">Consistent characters</span><i>●</i><span data-i18n="ribbon.b2">Product close-ups</span><i>●</i><span data-i18n="ribbon.b3">Sound design</span><i>●</i><span data-i18n="ribbon.b4">9:16</span><i>●</i><span data-i18n="ribbon.b5">1:1</span><i>●</i><span data-i18n="ribbon.b6">21:9</span><i>●</i><span data-i18n="ribbon.b7">One revision included</span><i>●</i>
   </div></div>
 </div>
 
 <!-- ───────────── MANIFESTO ───────────── -->
-<section class="manifesto" id="manifesto" aria-label="What we believe">
-  <p class="manifesto__text" data-words>Nobody remembers a product shot. They remember the old man who opened his door to a stray cat. So we write the story first, cast characters who look the same in every frame, and let your product walk in at the exact moment it matters.</p>
-  <p class="manifesto__sign">That is the whole method. The rest of this page is proof.</p>
+<section class="manifesto" id="manifesto" aria-label="What we believe" data-i18n-aria="manifesto.aria">
+  <p class="manifesto__text" data-words data-i18n-words="manifesto.text">Nobody remembers a product shot. They remember the old man who opened his door to a stray cat. So we write the story first, cast characters who look the same in every frame, and let your product walk in at the exact moment it matters.</p>
+  <p class="manifesto__sign" data-i18n="manifesto.sign">That is the whole method. The rest of this page is proof.</p>
 </section>
 
 <!-- ───────────── WORK ───────────── -->
@@ -191,83 +220,83 @@
     <div class="work__track" id="work-track">
 
       <div class="work__intro">
-        <h2 class="display" id="work-title">Five films.<br>Press play.</h2>
-        <p class="work__note">These are concept films: sample work made for fictional or generic brands, to show what the studio can make for yours.</p>
-        <p class="work__hint" aria-hidden="true"><span>Keep scrolling</span></p>
+        <h2 class="display" id="work-title" data-i18n-html="work.title">Five films.<br>Press play.</h2>
+        <p class="work__note" data-i18n="work.note">These are concept films: sample work made for fictional or generic brands, to show what the studio can make for yours.</p>
+        <p class="work__hint" aria-hidden="true"><span data-i18n="work.hint">Keep scrolling</span></p>
       </div>
 
-      <article class="film film--cobalt" data-slug="who-adopted-who" data-title="Who Adopted Whom" data-meta="Pet brand · Christmas story · 33 seconds">
+      <article class="film film--cobalt" data-slug="who-adopted-who" data-title="Who Adopted Whom" data-meta="Pet brand · Christmas story · 33 seconds" data-i18n-film-title="film.1.title" data-i18n-film-meta="film.1.meta">
         <p class="film__secs" aria-hidden="true">33<small>s</small></p>
-        <h3 class="film__title">Who Adopted Whom</h3>
-        <button class="film__play" type="button" aria-label="Play film: Who Adopted Whom, 33 seconds, with sound">
-          <img src="/assets/img/who-adopted-who-poster-sm.webp" srcset="/assets/img/who-adopted-who-poster-sm.webp 800w, /assets/img/who-adopted-who-poster.webp 1600w" sizes="(max-width: 899px) 92vw, 58vw" width="1600" height="686" alt="A ginger cat watches an old man's hand lay a candy cane on a snowy doormat" loading="lazy" decoding="async">
+        <h3 class="film__title" data-i18n="film.1.title">Who Adopted Whom</h3>
+        <button class="film__play" type="button" aria-label="Play film: Who Adopted Whom, 33 seconds, with sound" data-i18n-aria="film.1.playAria">
+          <img src="/assets/img/who-adopted-who-poster-sm.webp" srcset="/assets/img/who-adopted-who-poster-sm.webp 800w, /assets/img/who-adopted-who-poster.webp 1600w" sizes="(max-width: 899px) 92vw, 58vw" width="1600" height="686" alt="A ginger cat watches an old man's hand lay a candy cane on a snowy doormat" data-i18n-alt="film.1.alt" loading="lazy" decoding="async">
           <video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" width="640" height="274" data-src="/assets/video/who-adopted-who-preview.mp4"></video>
           <canvas aria-hidden="true"></canvas>
-          <span class="film__badge" aria-hidden="true">Play film</span>
+          <span class="film__badge" aria-hidden="true" data-i18n="work.badge">Play film</span>
         </button>
         <div class="film__info">
-          <p class="film__kind">Pet brand, Christmas story</p>
-          <p class="film__desc">A lonely old man and a stray cat, and a question about who rescued whom.</p>
+          <p class="film__kind" data-i18n="film.1.kind">Pet brand, Christmas story</p>
+          <p class="film__desc" data-i18n="film.1.desc">A lonely old man and a stray cat, and a question about who rescued whom.</p>
         </div>
       </article>
 
-      <article class="film film--lime" data-slug="pet-shop" data-title="Made for Every Walk" data-meta="Pet gear · Lifestyle spot · 18 seconds">
+      <article class="film film--lime" data-slug="pet-shop" data-title="Made for Every Walk" data-meta="Pet gear · Lifestyle spot · 18 seconds" data-i18n-film-title="film.2.title" data-i18n-film-meta="film.2.meta">
         <p class="film__secs" aria-hidden="true">18<small>s</small></p>
-        <h3 class="film__title">Made for Every Walk</h3>
-        <button class="film__play" type="button" aria-label="Play film: Made for Every Walk, 18 seconds, with sound">
-          <img src="/assets/img/pet-shop-poster-sm.webp" srcset="/assets/img/pet-shop-poster-sm.webp 800w, /assets/img/pet-shop-poster.webp 1600w" sizes="(max-width: 899px) 92vw, 58vw" width="1600" height="686" alt="A white dog in a lilac harness runs through shallow surf at sunset" loading="lazy" decoding="async">
+        <h3 class="film__title" data-i18n="film.2.title">Made for Every Walk</h3>
+        <button class="film__play" type="button" aria-label="Play film: Made for Every Walk, 18 seconds, with sound" data-i18n-aria="film.2.playAria">
+          <img src="/assets/img/pet-shop-poster-sm.webp" srcset="/assets/img/pet-shop-poster-sm.webp 800w, /assets/img/pet-shop-poster.webp 1600w" sizes="(max-width: 899px) 92vw, 58vw" width="1600" height="686" alt="A white dog in a lilac harness runs through shallow surf at sunset" data-i18n-alt="film.2.alt" loading="lazy" decoding="async">
           <video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" width="640" height="274" data-src="/assets/video/pet-shop-preview.mp4"></video>
           <canvas aria-hidden="true"></canvas>
-          <span class="film__badge" aria-hidden="true">Play film</span>
+          <span class="film__badge" aria-hidden="true" data-i18n="work.badge">Play film</span>
         </button>
         <div class="film__info">
-          <p class="film__kind">Pet gear, lifestyle spot</p>
-          <p class="film__desc">A dog harness, a beach and the golden hour. The short one: all energy, no dialogue.</p>
+          <p class="film__kind" data-i18n="film.2.kind">Pet gear, lifestyle spot</p>
+          <p class="film__desc" data-i18n="film.2.desc">A dog harness, a beach and the golden hour. The short one: all energy, no dialogue.</p>
         </div>
       </article>
 
-      <article class="film film--pink" data-slug="her-other-half" data-title="Her Other Half" data-meta="Food &amp; bakery · 60 seconds">
+      <article class="film film--pink" data-slug="her-other-half" data-title="Her Other Half" data-meta="Food &amp; bakery · 60 seconds" data-i18n-film-title="film.3.title" data-i18n-film-meta="film.3.meta">
         <p class="film__secs" aria-hidden="true">60<small>s</small></p>
-        <h3 class="film__title">Her Other Half</h3>
-        <button class="film__play" type="button" aria-label="Play film: Her Other Half, 60 seconds, with sound">
-          <img src="/assets/img/her-other-half-poster-sm.webp" srcset="/assets/img/her-other-half-poster-sm.webp 800w, /assets/img/her-other-half-poster.webp 1600w" sizes="(max-width: 899px) 92vw, 58vw" width="1600" height="686" alt="An elderly man reaches into a tin of cookies held between him and a younger woman" loading="lazy" decoding="async">
+        <h3 class="film__title" data-i18n="film.3.title">Her Other Half</h3>
+        <button class="film__play" type="button" aria-label="Play film: Her Other Half, 60 seconds, with sound" data-i18n-aria="film.3.playAria">
+          <img src="/assets/img/her-other-half-poster-sm.webp" srcset="/assets/img/her-other-half-poster-sm.webp 800w, /assets/img/her-other-half-poster.webp 1600w" sizes="(max-width: 899px) 92vw, 58vw" width="1600" height="686" alt="An elderly man reaches into a tin of cookies held between him and a younger woman" data-i18n-alt="film.3.alt" loading="lazy" decoding="async">
           <video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" width="640" height="274" data-src="/assets/video/her-other-half-preview.mp4"></video>
           <canvas aria-hidden="true"></canvas>
-          <span class="film__badge" aria-hidden="true">Play film</span>
+          <span class="film__badge" aria-hidden="true" data-i18n="work.badge">Play film</span>
         </button>
         <div class="film__info">
-          <p class="film__kind">Food and bakery</p>
-          <p class="film__desc">A quiet visit, a tin of cookies, and the memory it carries.</p>
+          <p class="film__kind" data-i18n="film.3.kind">Food and bakery</p>
+          <p class="film__desc" data-i18n="film.3.desc">A quiet visit, a tin of cookies, and the memory it carries.</p>
         </div>
       </article>
 
-      <article class="film film--vermilion" data-slug="the-key" data-title="The Key" data-meta="Florist · Linden &amp; Rose (fictional brand) · 93 seconds">
+      <article class="film film--vermilion" data-slug="the-key" data-title="The Key" data-meta="Florist · Linden &amp; Rose (fictional brand) · 93 seconds" data-i18n-film-title="film.4.title" data-i18n-film-meta="film.4.meta">
         <p class="film__secs" aria-hidden="true">93<small>s</small></p>
-        <h3 class="film__title">The Key</h3>
-        <button class="film__play" type="button" aria-label="Play film: The Key, 93 seconds, with sound">
-          <img src="/assets/img/the-key-poster-sm.webp" srcset="/assets/img/the-key-poster-sm.webp 800w, /assets/img/the-key-poster.webp 1600w" sizes="(max-width: 899px) 92vw, 58vw" width="1600" height="686" alt="A florist in a yellow apron ties a bouquet of peach roses while a man waits at the counter" loading="lazy" decoding="async">
+        <h3 class="film__title" data-i18n="film.4.title">The Key</h3>
+        <button class="film__play" type="button" aria-label="Play film: The Key, 93 seconds, with sound" data-i18n-aria="film.4.playAria">
+          <img src="/assets/img/the-key-poster-sm.webp" srcset="/assets/img/the-key-poster-sm.webp 800w, /assets/img/the-key-poster.webp 1600w" sizes="(max-width: 899px) 92vw, 58vw" width="1600" height="686" alt="A florist in a yellow apron ties a bouquet of peach roses while a man waits at the counter" data-i18n-alt="film.4.alt" loading="lazy" decoding="async">
           <video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" width="640" height="274" data-src="/assets/video/the-key-preview.mp4"></video>
           <canvas aria-hidden="true"></canvas>
-          <span class="film__badge" aria-hidden="true">Play film</span>
+          <span class="film__badge" aria-hidden="true" data-i18n="work.badge">Play film</span>
         </button>
         <div class="film__info">
-          <p class="film__kind">Florist, for the fictional brand Linden &amp; Rose</p>
-          <p class="film__desc">A couple, a bouquet, a second chance. The long one, for when the story needs room.</p>
+          <p class="film__kind" data-i18n="film.4.kind">Florist, for the fictional brand Linden &amp; Rose</p>
+          <p class="film__desc" data-i18n="film.4.desc">A couple, a bouquet, a second chance. The long one, for when the story needs room.</p>
         </div>
       </article>
 
-      <article class="film film--cream" data-slug="the-childhood-cake" data-title="The Childhood Cake" data-meta="Pastry shop · Rosewater &amp; Crumb (fictional brand) · 53 seconds">
+      <article class="film film--cream" data-slug="the-childhood-cake" data-title="The Childhood Cake" data-meta="Pastry shop · Rosewater &amp; Crumb (fictional brand) · 53 seconds" data-i18n-film-title="film.5.title" data-i18n-film-meta="film.5.meta">
         <p class="film__secs" aria-hidden="true">53<small>s</small></p>
-        <h3 class="film__title">The Childhood Cake</h3>
-        <button class="film__play" type="button" aria-label="Play film: The Childhood Cake, 53 seconds, with sound">
-          <img src="/assets/img/the-childhood-cake-poster-sm.webp" srcset="/assets/img/the-childhood-cake-poster-sm.webp 800w, /assets/img/the-childhood-cake-poster.webp 1600w" sizes="(max-width: 899px) 92vw, 58vw" width="1600" height="686" alt="Close-up of a white-haired man about to taste a forkful of custard cake" loading="lazy" decoding="async">
+        <h3 class="film__title" data-i18n="film.5.title">The Childhood Cake</h3>
+        <button class="film__play" type="button" aria-label="Play film: The Childhood Cake, 53 seconds, with sound" data-i18n-aria="film.5.playAria">
+          <img src="/assets/img/the-childhood-cake-poster-sm.webp" srcset="/assets/img/the-childhood-cake-poster-sm.webp 800w, /assets/img/the-childhood-cake-poster.webp 1600w" sizes="(max-width: 899px) 92vw, 58vw" width="1600" height="686" alt="Close-up of a white-haired man about to taste a forkful of custard cake" data-i18n-alt="film.5.alt" loading="lazy" decoding="async">
           <video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" width="640" height="274" data-src="/assets/video/the-childhood-cake-preview.mp4"></video>
           <canvas aria-hidden="true"></canvas>
-          <span class="film__badge" aria-hidden="true">Play film</span>
+          <span class="film__badge" aria-hidden="true" data-i18n="work.badge">Play film</span>
         </button>
         <div class="film__info">
-          <p class="film__kind">Pastry shop, for the fictional brand Rosewater &amp; Crumb</p>
-          <p class="film__desc">A grandfather, a granddaughter, and a slice of cake that takes him all the way back.</p>
+          <p class="film__kind" data-i18n="film.5.kind">Pastry shop, for the fictional brand Rosewater &amp; Crumb</p>
+          <p class="film__desc" data-i18n="film.5.desc">A grandfather, a granddaughter, and a slice of cake that takes him all the way back.</p>
         </div>
       </article>
 
@@ -277,117 +306,117 @@
 
 <!-- ───────────── SCREENING ROOM ───────────── -->
 <section class="screening" id="films" aria-labelledby="films-title">
-  <h2 class="display" id="films-title" data-lines>Watch the<br>full films.</h2>
-  <p class="screening__note">Every film, start to finish, with sound. Press play on any of them.</p>
+  <h2 class="display" id="films-title" data-lines data-i18n-html="films.title">Watch the<br>full films.</h2>
+  <p class="screening__note" data-i18n="films.note">Every film, start to finish, with sound. Press play on any of them.</p>
   <div class="screening__grid">
     <figure class="screen screen--cobalt">
-      <video controls playsinline preload="none" width="1470" height="630" poster="/assets/img/who-adopted-who-poster-sm.webp" src="/assets/video/who-adopted-who.mp4" aria-label="Who Adopted Whom, full film with sound"></video>
-      <figcaption><b>Who Adopted Whom</b><span>33 s</span></figcaption>
+      <video controls playsinline preload="none" width="1470" height="630" poster="/assets/img/who-adopted-who-poster-sm.webp" src="/assets/video/who-adopted-who.mp4" aria-label="Who Adopted Whom, full film with sound" data-i18n-aria="film.1.screenAria"></video>
+      <figcaption><b data-i18n="film.1.title">Who Adopted Whom</b><span data-i18n="film.1.secs">33 s</span></figcaption>
     </figure>
     <figure class="screen screen--lime">
-      <video controls playsinline preload="none" width="1470" height="630" poster="/assets/img/pet-shop-poster-sm.webp" src="/assets/video/pet-shop.mp4" aria-label="Made for Every Walk, full film with sound"></video>
-      <figcaption><b>Made for Every Walk</b><span>18 s</span></figcaption>
+      <video controls playsinline preload="none" width="1470" height="630" poster="/assets/img/pet-shop-poster-sm.webp" src="/assets/video/pet-shop.mp4" aria-label="Made for Every Walk, full film with sound" data-i18n-aria="film.2.screenAria"></video>
+      <figcaption><b data-i18n="film.2.title">Made for Every Walk</b><span data-i18n="film.2.secs">18 s</span></figcaption>
     </figure>
     <figure class="screen screen--pink">
-      <video controls playsinline preload="none" width="1470" height="630" poster="/assets/img/her-other-half-poster-sm.webp" src="/assets/video/her-other-half.mp4" aria-label="Her Other Half, full film with sound"></video>
-      <figcaption><b>Her Other Half</b><span>60 s</span></figcaption>
+      <video controls playsinline preload="none" width="1470" height="630" poster="/assets/img/her-other-half-poster-sm.webp" src="/assets/video/her-other-half.mp4" aria-label="Her Other Half, full film with sound" data-i18n-aria="film.3.screenAria"></video>
+      <figcaption><b data-i18n="film.3.title">Her Other Half</b><span data-i18n="film.3.secs">60 s</span></figcaption>
     </figure>
     <figure class="screen screen--vermilion">
-      <video controls playsinline preload="none" width="1470" height="630" poster="/assets/img/the-key-poster-sm.webp" src="/assets/video/the-key.mp4" aria-label="The Key, full film with sound"></video>
-      <figcaption><b>The Key</b><span>93 s</span></figcaption>
+      <video controls playsinline preload="none" width="1470" height="630" poster="/assets/img/the-key-poster-sm.webp" src="/assets/video/the-key.mp4" aria-label="The Key, full film with sound" data-i18n-aria="film.4.screenAria"></video>
+      <figcaption><b data-i18n="film.4.title">The Key</b><span data-i18n="film.4.secs">93 s</span></figcaption>
     </figure>
     <figure class="screen screen--cobalt">
-      <video controls playsinline preload="none" width="1470" height="630" poster="/assets/img/the-childhood-cake-poster-sm.webp" src="/assets/video/the-childhood-cake.mp4" aria-label="The Childhood Cake, full film with sound"></video>
-      <figcaption><b>The Childhood Cake</b><span>53 s</span></figcaption>
+      <video controls playsinline preload="none" width="1470" height="630" poster="/assets/img/the-childhood-cake-poster-sm.webp" src="/assets/video/the-childhood-cake.mp4" aria-label="The Childhood Cake, full film with sound" data-i18n-aria="film.5.screenAria"></video>
+      <figcaption><b data-i18n="film.5.title">The Childhood Cake</b><span data-i18n="film.5.secs">53 s</span></figcaption>
     </figure>
   </div>
 </section>
 
 <!-- ───────────── BRAND GALLERY ───────────── -->
 <section class="gallery" id="brands" aria-labelledby="brands-title">
-  <h2 class="display" id="brands-title" data-lines>Brands we<br>brought to life.</h2>
+  <h2 class="display" id="brands-title" data-lines data-i18n-html="brands.title">Product photos,<br>made with AI.</h2>
   <div class="gallery__grid">
-    <img src="/assets/img/brand-01-sm.webp" srcset="/assets/img/brand-01-sm.webp 600w, /assets/img/brand-01.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
-    <img src="/assets/img/brand-02-sm.webp" srcset="/assets/img/brand-02-sm.webp 600w, /assets/img/brand-02.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
-    <img src="/assets/img/brand-03-sm.webp" srcset="/assets/img/brand-03-sm.webp 600w, /assets/img/brand-03.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
-    <img src="/assets/img/brand-04-sm.webp" srcset="/assets/img/brand-04-sm.webp 600w, /assets/img/brand-04.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
-    <img src="/assets/img/brand-05-sm.webp" srcset="/assets/img/brand-05-sm.webp 600w, /assets/img/brand-05.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
-    <img src="/assets/img/brand-06-sm.webp" srcset="/assets/img/brand-06-sm.webp 600w, /assets/img/brand-06.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
-    <img src="/assets/img/brand-07-sm.webp" srcset="/assets/img/brand-07-sm.webp 600w, /assets/img/brand-07.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
-    <img src="/assets/img/brand-08-sm.webp" srcset="/assets/img/brand-08-sm.webp 600w, /assets/img/brand-08.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
-    <img src="/assets/img/brand-09-sm.webp" srcset="/assets/img/brand-09-sm.webp 600w, /assets/img/brand-09.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
-    <img src="/assets/img/brand-10-sm.webp" srcset="/assets/img/brand-10-sm.webp 600w, /assets/img/brand-10.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
-    <img src="/assets/img/brand-11-sm.webp" srcset="/assets/img/brand-11-sm.webp 600w, /assets/img/brand-11.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
-    <img src="/assets/img/brand-12-sm.webp" srcset="/assets/img/brand-12-sm.webp 600w, /assets/img/brand-12.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
+    <img src="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-01-sm.webp" srcset="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-01-sm.webp 600w, https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-01.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
+    <img src="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-02-sm.webp" srcset="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-02-sm.webp 600w, https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-02.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
+    <img src="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-03-sm.webp" srcset="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-03-sm.webp 600w, https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-03.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
+    <img src="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-04-sm.webp" srcset="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-04-sm.webp 600w, https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-04.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
+    <img src="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-05-sm.webp" srcset="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-05-sm.webp 600w, https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-05.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
+    <img src="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-06-sm.webp" srcset="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-06-sm.webp 600w, https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-06.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
+    <img src="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-07-sm.webp" srcset="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-07-sm.webp 600w, https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-07.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
+    <img src="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-08-sm.webp" srcset="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-08-sm.webp 600w, https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-08.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
+    <img src="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-09-sm.webp" srcset="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-09-sm.webp 600w, https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-09.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
+    <img src="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-10-sm.webp" srcset="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-10-sm.webp 600w, https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-10.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
+    <img src="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-11-sm.webp" srcset="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-11-sm.webp 600w, https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-11.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
+    <img src="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-12-sm.webp" srcset="https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-12-sm.webp 600w, https://raw.githubusercontent.com/studioisaquebcastro-byte/estudio-isque-b-castro-site/main/assets/img/brand-12.webp 1200w" sizes="(max-width: 699px) 92vw, (max-width: 1099px) 46vw, 31vw" width="1200" height="514" loading="lazy" decoding="async" alt="">
   </div>
 </section>
 
 <!-- ───────────── THEMES / STORYTELLING ───────────── -->
 <section class="themes" id="themes" aria-labelledby="themes-title">
   <div class="themes__head">
-    <h2 class="display" id="themes-title" data-lines>You pick<br>the theme.<br>We write<br>the story.</h2>
-    <p class="themes__lede">Give us a theme, a date or just a feeling. We take it from there: the idea, the script, the characters and the twist that makes people watch to the end.</p>
+    <h2 class="display" id="themes-title" data-lines data-i18n-html="themes.title">You pick<br>the theme.<br>We write<br>the story.</h2>
+    <p class="themes__lede" data-i18n="themes.lede">Give us a theme, a date or just a feeling. We take it from there: the idea, the script, the characters and the twist that makes people watch to the end.</p>
   </div>
   <div class="themes__body">
-    <p class="themes__label">Start with a theme</p>
+    <p class="themes__label" data-i18n="themes.label">Start with a theme</p>
     <div class="themes__chips">
-      <a class="tchip tchip--lime" href="#contact" data-prefill="Story on the theme: Christmas">Christmas</a>
-      <a class="tchip tchip--pink" href="#contact" data-prefill="Story on the theme: Mother's Day">Mother's Day</a>
-      <a class="tchip tchip--cobalt" href="#contact" data-prefill="Story on the theme: Father's Day">Father's Day</a>
-      <a class="tchip tchip--vermilion" href="#contact" data-prefill="Story on the theme: Valentine's Day">Valentine's Day</a>
-      <a class="tchip tchip--lime" href="#contact" data-prefill="Story on the theme: Black Friday">Black Friday</a>
-      <a class="tchip tchip--pink" href="#contact" data-prefill="Story on the theme: Product launch">Product launch</a>
-      <a class="tchip tchip--cobalt" href="#contact" data-prefill="Story on the theme: Back to school">Back to school</a>
-      <a class="tchip tchip--vermilion" href="#contact" data-prefill="Story on the theme: Anniversary">Anniversary</a>
-      <a class="tchip tchip--lime" href="#contact" data-prefill="Story on the theme: Summer">Summer</a>
-      <a class="tchip tchip--ink" href="#contact" data-prefill="Story on the theme: Your own idea">Your own idea</a>
+      <a class="tchip tchip--lime" href="#contact" data-prefill="Story on the theme: Christmas" data-i18n="themes.chip1" data-i18n-prefill="themes.chip1Prefill">Christmas</a>
+      <a class="tchip tchip--pink" href="#contact" data-prefill="Story on the theme: Mother's Day" data-i18n="themes.chip2" data-i18n-prefill="themes.chip2Prefill">Mother's Day</a>
+      <a class="tchip tchip--cobalt" href="#contact" data-prefill="Story on the theme: Father's Day" data-i18n="themes.chip3" data-i18n-prefill="themes.chip3Prefill">Father's Day</a>
+      <a class="tchip tchip--vermilion" href="#contact" data-prefill="Story on the theme: Valentine's Day" data-i18n="themes.chip4" data-i18n-prefill="themes.chip4Prefill">Valentine's Day</a>
+      <a class="tchip tchip--lime" href="#contact" data-prefill="Story on the theme: Black Friday" data-i18n="themes.chip5" data-i18n-prefill="themes.chip5Prefill">Black Friday</a>
+      <a class="tchip tchip--pink" href="#contact" data-prefill="Story on the theme: Product launch" data-i18n="themes.chip6" data-i18n-prefill="themes.chip6Prefill">Product launch</a>
+      <a class="tchip tchip--cobalt" href="#contact" data-prefill="Story on the theme: Back to school" data-i18n="themes.chip7" data-i18n-prefill="themes.chip7Prefill">Back to school</a>
+      <a class="tchip tchip--vermilion" href="#contact" data-prefill="Story on the theme: Anniversary" data-i18n="themes.chip8" data-i18n-prefill="themes.chip8Prefill">Anniversary</a>
+      <a class="tchip tchip--lime" href="#contact" data-prefill="Story on the theme: Summer" data-i18n="themes.chip9" data-i18n-prefill="themes.chip9Prefill">Summer</a>
+      <a class="tchip tchip--ink" href="#contact" data-prefill="Story on the theme: Your own idea" data-i18n="themes.chip10" data-i18n-prefill="themes.chip10Prefill">Your own idea</a>
     </div>
     <ol class="themes__steps">
-      <li><b>The hidden desire</b> We look past the obvious reason to buy and find the feeling underneath it: belonging, being remembered, feeling like a child again.</li>
-      <li><b>The script</b> A beginning, a middle and a turn, written shot by shot with the small details that make a scene feel real: a glance, a hand, a pause.</li>
-      <li><b>The storytelling</b> Characters people care about, silence where it matters, and an ending that lands, with your product at the heart of it.</li>
+      <li data-i18n-html="themes.step1"><b>The hidden desire</b> We look past the obvious reason to buy and find the feeling underneath it: belonging, being remembered, feeling like a child again.</li>
+      <li data-i18n-html="themes.step2"><b>The script</b> A beginning, a middle and a turn, written shot by shot with the small details that make a scene feel real: a glance, a hand, a pause.</li>
+      <li data-i18n-html="themes.step3"><b>The storytelling</b> Characters people care about, silence where it matters, and an ending that lands, with your product at the heart of it.</li>
     </ol>
     <div class="themes__examples">
-      <p><span>Theme</span> Christmas <i aria-hidden="true">→</i> <span>Story</span> A lonely man and a stray cat. Who rescued whom?</p>
-      <p><span>Theme</span> Grandparents <i aria-hidden="true">→</i> <span>Story</span> A grandfather finds the cake from his childhood, through his granddaughter.</p>
-      <p><span>Theme</span> Second chances <i aria-hidden="true">→</i> <span>Story</span> A key left on the table, and a man who finally goes back.</p>
+      <p data-i18n-html="themes.ex1"><span>Theme</span> Christmas <i aria-hidden="true">→</i> <span>Story</span> A lonely man and a stray cat. Who rescued whom?</p>
+      <p data-i18n-html="themes.ex2"><span>Theme</span> Grandparents <i aria-hidden="true">→</i> <span>Story</span> A grandfather finds the cake from his childhood, through his granddaughter.</p>
+      <p data-i18n-html="themes.ex3"><span>Theme</span> Second chances <i aria-hidden="true">→</i> <span>Story</span> A key left on the table, and a man who finally goes back.</p>
     </div>
-    <a class="btn btn--lime" href="#contact" data-prefill="Story on a theme of my choice">Send us your theme</a>
+    <a class="btn btn--lime" href="#contact" data-prefill="Story on a theme of my choice" data-i18n="themes.cta" data-i18n-prefill="themes.ctaPrefill">Send us your theme</a>
   </div>
 </section>
 
 <!-- ───────────── SERVICES ───────────── -->
 <section class="services" id="services" aria-labelledby="services-title">
-  <h2 class="display" id="services-title" data-lines>Two services.<br>One goal: an ad<br>people finish.</h2>
+  <h2 class="display" id="services-title" data-lines data-i18n-html="services.title">Everything your brand needs.<br>Made with AI.</h2>
   <div class="services__grid">
     <article class="service service--ink" data-tilt>
-      <p class="service__tag">The package</p>
-      <h3>AI video ads</h3>
-      <p class="service__lede">Three cinematic ads built around one story, made for the feed and good enough for a cinema crop.</p>
-      <ul class="service__facts">
-        <li><b>3</b><span>video ads in every package</span></li>
-        <li><b>48h</b><span>delivery</span></li>
-        <li><b>1</b><span>revision included</span></li>
-      </ul>
-      <ul class="service__list">
-        <li>Script with a beginning, a middle and a turn</li>
-        <li>Character sheets so faces stay consistent</li>
-        <li>Product and brand close-ups</li>
-        <li>Soundtrack, sound design and a closing logo card</li>
-      </ul>
-      <a class="btn btn--lime" href="#contact" data-prefill="AI video ads package (3 ads)">Request a quote</a>
+      <p class="service__tag" data-i18n="services.s1.tag">01 · Video</p>
+      <h3 data-i18n="services.s1.title">AI video ads</h3>
+      <p class="service__lede" data-i18n="services.s1.lede">Cinematic ads built around a story, made for the feed and good enough for a cinema crop.</p>
+      <ul class="service__facts"><li><b>3</b><span data-i18n="services.s1.fact1">ads per package</span></li><li><b>48h</b><span data-i18n="services.s1.fact2">delivery</span></li><li><b>1</b><span data-i18n="services.s1.fact3">revision included</span></li></ul>
+      <ul class="service__list"><li data-i18n="services.s1.li1">You pick the theme, we write the script and the twist</li><li data-i18n="services.s1.li2">Character sheets so faces stay consistent</li><li data-i18n="services.s1.li3">Product and brand close-ups, soundtrack and logo card</li></ul>
+      <a class="btn btn--lime" href="#contact" data-prefill="AI video ads" data-i18n="nav.cta" data-i18n-prefill="services.s1.prefill">Request a quote</a>
     </article>
     <article class="service service--cream" data-tilt>
-      <p class="service__tag">Optional add-on</p>
-      <h3>Meta campaign setup</h3>
-      <p class="service__lede">Your films, placed in a Facebook and Instagram campaign by a paid-traffic specialist, ready to go live.</p>
-      <ul class="service__list service__list--big">
-        <li><b>Structure</b> Campaign, ad sets and ads laid out around one clear objective.</li>
-        <li><b>Audience</b> Who sees the ads, where, and why.</li>
-        <li><b>Pixel</b> Tracking checked so the right event is counted.</li>
-        <li><b>Creative testing</b> The three films set up to compete, so you learn which story works.</li>
-      </ul>
-      <a class="btn btn--ink" href="#contact" data-prefill="AI video ads + Meta campaign setup">Request a quote</a>
+      <p class="service__tag" data-i18n="services.s2.tag">02 · Photo</p>
+      <h3 data-i18n-html="services.s2.title">AI product &amp; brand photos</h3>
+      <p class="service__lede" data-i18n="services.s2.lede">Studio-quality product shots, lifestyle scenes and campaign images, without a photoshoot.</p>
+      <ul class="service__list service__list--big"><li data-i18n-html="services.s2.li1"><b>Product</b> Clean packshots for your store and marketplaces.</li><li data-i18n-html="services.s2.li2"><b>Lifestyle</b> Your product in real scenes, with real-looking people.</li><li data-i18n-html="services.s2.li3"><b>Campaign</b> Seasonal and launch visuals in every format you need.</li></ul>
+      <a class="btn btn--ink" href="#contact" data-prefill="AI product and brand photos" data-i18n="nav.cta" data-i18n-prefill="services.s2.prefill">Request a quote</a>
+    </article>
+    <article class="service service--cream" data-tilt>
+      <p class="service__tag" data-i18n="services.s3.tag">03 · Web</p>
+      <h3 data-i18n-html="services.s3.title">Websites &amp; landing pages</h3>
+      <p class="service__lede" data-i18n="services.s3.lede">Fast, striking sites that turn visitors into enquiries. You are looking at one.</p>
+      <ul class="service__list service__list--big"><li data-i18n-html="services.s3.li1"><b>Design</b> Bold, animated, built around your brand.</li><li data-i18n-html="services.s3.li2"><b>Speed</b> Optimised to load fast on any phone.</li><li data-i18n-html="services.s3.li3"><b>Leads</b> Quote forms and a private panel to manage every request.</li></ul>
+      <a class="btn btn--ink" href="#contact" data-prefill="Website or landing page" data-i18n="nav.cta" data-i18n-prefill="services.s3.prefill">Request a quote</a>
+    </article>
+    <article class="service service--ink" data-tilt>
+      <p class="service__tag" data-i18n-html="services.s4.tag">04 · Social &amp; Ads</p>
+      <h3 data-i18n-html="services.s4.title">Social posts &amp; Meta Ads</h3>
+      <p class="service__lede" data-i18n="services.s4.lede">Posts, reels and stories for your feed, and the paid campaigns that put them in front of buyers.</p>
+      <ul class="service__list"><li data-i18n="services.s4.li1">Feed posts, carousels, reels and stories</li><li data-i18n="services.s4.li2">Meta campaign structure, audience and pixel</li><li data-i18n="services.s4.li3">Creative testing to learn what actually sells</li></ul>
+      <a class="btn btn--lime" href="#contact" data-prefill="Social posts and Meta Ads" data-i18n="nav.cta" data-i18n-prefill="services.s4.prefill">Request a quote</a>
     </article>
   </div>
 </section>
@@ -395,17 +424,17 @@
 <!-- ───────────── PROCESS ───────────── -->
 <section class="process" id="process" aria-labelledby="process-title">
   <header class="process__head">
-    <h2 class="display" id="process-title" data-lines>From brief<br>to launch.</h2>
-    <p>Four steps. Your films land 48 hours after the brief is agreed.</p>
+    <h2 class="display" id="process-title" data-lines data-i18n-html="process.title">From brief<br>to launch.</h2>
+    <p data-i18n="process.lede">Four steps. Your films land 48 hours after the brief is agreed.</p>
   </header>
   <ol class="process__steps">
     <li class="step step--lime">
       <div class="step__inner">
         <p class="step__num" aria-hidden="true">1</p>
         <div class="step__body">
-          <h3>Brief</h3>
-          <p>Tell us the product, who it is for and where the ads will run. A short form or a quick message is enough to get started.</p>
-          <p class="step__clock"><b>Hour 0</b> The clock starts when the brief is agreed.</p>
+          <h3 data-i18n="process.st1.title">Brief</h3>
+          <p data-i18n="process.st1.desc">Tell us the product, who it is for and where the ads will run. A short form or a quick message is enough to get started.</p>
+          <p class="step__clock" data-i18n-html="process.st1.clock"><b>Hour 0</b> The clock starts when the brief is agreed.</p>
         </div>
       </div>
     </li>
@@ -413,9 +442,9 @@
       <div class="step__inner">
         <p class="step__num" aria-hidden="true">2</p>
         <div class="step__body">
-          <h3>Script and characters</h3>
-          <p>We write a story with a beginning, a middle and a turn. Then we cast it: every character gets a four-view sheet, so they look the same in every shot.</p>
-          <p class="step__clock"><b>Inside the 48 hours</b> Story before pixels.</p>
+          <h3 data-i18n="process.st2.title">Script and characters</h3>
+          <p data-i18n="process.st2.desc">We write a story with a beginning, a middle and a turn. Then we cast it: every character gets a four-view sheet, so they look the same in every shot.</p>
+          <p class="step__clock" data-i18n-html="process.st2.clock"><b>Inside the 48 hours</b> Story before pixels.</p>
         </div>
       </div>
     </li>
@@ -423,9 +452,9 @@
       <div class="step__inner">
         <p class="step__num" aria-hidden="true">3</p>
         <div class="step__body">
-          <h3>Film</h3>
-          <p>Scenes, product close-ups, soundtrack and sound design, closed with your logo card. You receive three ads, with one revision included.</p>
-          <p class="step__clock"><b>Hour 48</b> Three films delivered.</p>
+          <h3 data-i18n="process.st3.title">Film</h3>
+          <p data-i18n="process.st3.desc">Scenes, product close-ups, soundtrack and sound design, closed with your logo card. You receive three ads, with one revision included.</p>
+          <p class="step__clock" data-i18n-html="process.st3.clock"><b>Hour 48</b> Three films delivered.</p>
         </div>
       </div>
     </li>
@@ -433,9 +462,9 @@
       <div class="step__inner">
         <p class="step__num" aria-hidden="true">4</p>
         <div class="step__body">
-          <h3>Launch</h3>
-          <p>If you want it, we set the films up in a Meta campaign: structure, audience, pixel and a creative test. Otherwise the files are yours to run.</p>
-          <p class="step__clock"><b>After delivery</b> Optional Meta campaign setup.</p>
+          <h3 data-i18n="process.st4.title">Launch</h3>
+          <p data-i18n="process.st4.desc">If you want it, we set the films up in a Meta campaign: structure, audience, pixel and a creative test. Otherwise the files are yours to run.</p>
+          <p class="step__clock" data-i18n-html="process.st4.clock"><b>After delivery</b> Optional Meta campaign setup.</p>
         </div>
       </div>
     </li>
@@ -445,135 +474,146 @@
 <!-- ───────────── BEHIND THE SCENES / STUDIO ───────────── -->
 <section class="studio" id="studio" aria-labelledby="studio-title">
   <div class="studio__text">
-    <h2 class="display" id="studio-title" data-lines>Behind<br>the scenes.</h2>
-    <p class="studio__lede">How we keep characters consistent: before a single scene is generated, everyone in the film gets a character sheet with four views. Face close-up, full body front, side profile and back.</p>
-    <p>That sheet is the reference for every shot, which is why Alvaro has the same face at the door and at the table, and why Caramelo keeps his torn ear.</p>
+    <h2 class="display" id="studio-title" data-lines data-i18n-html="studio.title">Behind<br>the scenes.</h2>
+    <p class="studio__lede" data-i18n="studio.lede">How we keep characters consistent: before a single scene is generated, everyone in the film gets a character sheet with four views. Face close-up, full body front, side profile and back.</p>
+    <p data-i18n="studio.p2">That sheet is the reference for every shot, which is why Alvaro has the same face at the door and at the table, and why Caramelo keeps his torn ear.</p>
     <ul class="craft">
-      <li><b>Story first</b> A script with a turn, written before anything is rendered.</li>
-      <li><b>Consistent characters</b> One four-view sheet per character, human or cat.</li>
-      <li><b>Product close-ups</b> Shots that linger on the product and the brand details.</li>
-      <li><b>Sound design</b> Music and sound built for the cut, not pasted under it.</li>
-      <li><b>Logo card</b> Every film closes on your brand.</li>
+      <li data-i18n-html="studio.c1"><b>Story first</b> A script with a turn, written before anything is rendered.</li>
+      <li data-i18n-html="studio.c2"><b>Consistent characters</b> One four-view sheet per character, human or cat.</li>
+      <li data-i18n-html="studio.c3"><b>Product close-ups</b> Shots that linger on the product and the brand details.</li>
+      <li data-i18n-html="studio.c4"><b>Sound design</b> Music and sound built for the cut, not pasted under it.</li>
+      <li data-i18n-html="studio.c5"><b>Logo card</b> Every film closes on your brand.</li>
     </ul>
-    <p class="studio__who">The studio is run by Isaac B. Castro, a paid-traffic specialist based in Portugal, working with brands in the US, the UK and the EU.</p>
+    <p class="studio__who" data-i18n="studio.who">Castro Creative is run by Isaque B. Castro, a paid-traffic specialist based in Portugal, working with brands in the US, the UK and the EU.</p>
   </div>
 
-  <div class="sheets" aria-label="Character sheets used in the films">
+  <div class="sheets" aria-label="Character sheets used in the films" data-i18n-aria="studio.sheetsAria">
     <figure class="sheet" data-tilt data-depth="-6" style="--r:-2.5deg">
-      <img src="/assets/img/sheet-alvaro-sm.webp" srcset="/assets/img/sheet-alvaro-sm.webp 800w, /assets/img/sheet-alvaro.webp 1376w" sizes="(max-width: 899px) 86vw, 44vw" width="1376" height="768" loading="lazy" decoding="async" alt="Character sheet for Alvaro: face close-up, full body front, side profile and back of an older man in a dark coat and green scarf">
-      <figcaption><b>Alvaro</b> The Childhood Cake</figcaption>
+      <img src="/assets/img/sheet-alvaro-sm.webp" srcset="/assets/img/sheet-alvaro-sm.webp 800w, /assets/img/sheet-alvaro.webp 1376w" sizes="(max-width: 899px) 86vw, 44vw" width="1376" height="768" loading="lazy" decoding="async" alt="Character sheet for Alvaro: face close-up, full body front, side profile and back of an older man in a dark coat and green scarf" data-i18n-alt="studio.sh1Alt">
+      <figcaption data-i18n-html="studio.sh1Cap"><b>Alvaro</b> The Childhood Cake</figcaption>
     </figure>
     <figure class="sheet" data-tilt data-depth="8" style="--r:2deg">
-      <img src="/assets/img/sheet-ines-sm.webp" srcset="/assets/img/sheet-ines-sm.webp 800w, /assets/img/sheet-ines.webp 1376w" sizes="(max-width: 899px) 86vw, 44vw" width="1376" height="768" loading="lazy" decoding="async" alt="Character sheet for Ines: four views of a young girl with braids, a yellow raincoat and red boots">
-      <figcaption><b>Ines</b> The Childhood Cake</figcaption>
+      <img src="/assets/img/sheet-ines-sm.webp" srcset="/assets/img/sheet-ines-sm.webp 800w, /assets/img/sheet-ines.webp 1376w" sizes="(max-width: 899px) 86vw, 44vw" width="1376" height="768" loading="lazy" decoding="async" alt="Character sheet for Ines: four views of a young girl with braids, a yellow raincoat and red boots" data-i18n-alt="studio.sh2Alt">
+      <figcaption data-i18n-html="studio.sh2Cap"><b>Ines</b> The Childhood Cake</figcaption>
     </figure>
     <figure class="sheet" data-tilt data-depth="-4" style="--r:-1.5deg">
-      <img src="/assets/img/sheet-lucia-sm.webp" srcset="/assets/img/sheet-lucia-sm.webp 800w, /assets/img/sheet-lucia.webp 1376w" sizes="(max-width: 899px) 86vw, 44vw" width="1376" height="768" loading="lazy" decoding="async" alt="Character sheet for Lucia: four views of a baker with glasses and a flour-dusted apron">
-      <figcaption><b>Lucia</b> The Childhood Cake</figcaption>
+      <img src="/assets/img/sheet-lucia-sm.webp" srcset="/assets/img/sheet-lucia-sm.webp 800w, /assets/img/sheet-lucia.webp 1376w" sizes="(max-width: 899px) 86vw, 44vw" width="1376" height="768" loading="lazy" decoding="async" alt="Character sheet for Lucia: four views of a baker with glasses and a flour-dusted apron" data-i18n-alt="studio.sh3Alt">
+      <figcaption data-i18n-html="studio.sh3Cap"><b>Lucia</b> The Childhood Cake</figcaption>
     </figure>
     <figure class="sheet" data-tilt data-depth="10" style="--r:3deg">
-      <img src="/assets/img/sheet-armando-sm.webp" srcset="/assets/img/sheet-armando-sm.webp 800w, /assets/img/sheet-armando.webp 1600w" sizes="(max-width: 899px) 86vw, 44vw" width="1600" height="904" loading="lazy" decoding="async" alt="Character sheet for Armando: four views of an old man in a green wool coat and red scarf">
-      <figcaption><b>Armando</b> Who Adopted Whom</figcaption>
+      <img src="/assets/img/sheet-armando-sm.webp" srcset="/assets/img/sheet-armando-sm.webp 800w, /assets/img/sheet-armando.webp 1600w" sizes="(max-width: 899px) 86vw, 44vw" width="1600" height="904" loading="lazy" decoding="async" alt="Character sheet for Armando: four views of an old man in a green wool coat and red scarf" data-i18n-alt="studio.sh4Alt">
+      <figcaption data-i18n-html="studio.sh4Cap"><b>Armando</b> Who Adopted Whom</figcaption>
     </figure>
     <figure class="sheet" data-tilt data-depth="-8" style="--r:-3deg">
-      <img src="/assets/img/sheet-caramelo-sm.webp" srcset="/assets/img/sheet-caramelo-sm.webp 800w, /assets/img/sheet-caramelo.webp 1600w" sizes="(max-width: 899px) 86vw, 44vw" width="1600" height="904" loading="lazy" decoding="async" alt="Character sheet for Caramelo: four views of a ginger cat with a torn ear">
-      <figcaption><b>Caramelo</b> Who Adopted Whom</figcaption>
+      <img src="/assets/img/sheet-caramelo-sm.webp" srcset="/assets/img/sheet-caramelo-sm.webp 800w, /assets/img/sheet-caramelo.webp 1600w" sizes="(max-width: 899px) 86vw, 44vw" width="1600" height="904" loading="lazy" decoding="async" alt="Character sheet for Caramelo: four views of a ginger cat with a torn ear" data-i18n-alt="studio.sh5Alt">
+      <figcaption data-i18n-html="studio.sh5Cap"><b>Caramelo</b> Who Adopted Whom</figcaption>
     </figure>
     <div class="logos">
-      <p>Brand marks designed for the concept films. Both brands are fictional.</p>
-      <img src="/assets/img/logo-linden-rose.webp" width="640" height="352" loading="lazy" decoding="async" alt="Brand mark designed for a concept film">
-      <img src="/assets/img/logo-rosewater-crumb.webp" width="640" height="402" loading="lazy" decoding="async" alt="Brand mark designed for a concept film">
+      <p data-i18n="studio.logosNote">Brand marks designed for the concept films. Both brands are fictional.</p>
+      <img src="/assets/img/logo-linden-rose.webp" width="640" height="352" loading="lazy" decoding="async" alt="Linden &amp; Rose logo, a fictional florist" data-i18n-alt="studio.logo1Alt">
+      <img src="/assets/img/logo-rosewater-crumb.webp" width="640" height="402" loading="lazy" decoding="async" alt="Rosewater &amp; Crumb logo, a fictional pastry shop" data-i18n-alt="studio.logo2Alt">
     </div>
   </div>
 </section>
 
 <!-- ───────────── WHY IT WORKS ───────────── -->
 <section class="why" id="why" aria-labelledby="why-title">
-  <h2 class="display" id="why-title" data-lines>Why it works.</h2>
+  <h2 class="display" id="why-title" data-lines data-i18n-html="why.title">Why it works.</h2>
   <ul class="why__list">
-    <li data-reveal><h3>Feeling is what people keep.</h3><p>A feature list asks for attention. A story earns it, and the brand is there when the feeling lands.</p></li>
-    <li data-reveal><h3>The characters hold together.</h3><p>Same face, same coat, same cat in every shot. Nothing breaks the spell halfway through.</p></li>
-    <li data-reveal><h3>The product gets its moment.</h3><p>It enters when the story needs it, in close-up, so it is wanted rather than announced.</p></li>
-    <li data-reveal><h3>Made by someone who runs ads.</h3><p>The films are written by a Meta Ads specialist, with the placement, the format and the test in mind.</p></li>
+    <li data-reveal><h3 data-i18n="why.1.title">Feeling is what people keep.</h3><p data-i18n="why.1.desc">A feature list asks for attention. A story earns it, and the brand is there when the feeling lands.</p></li>
+    <li data-reveal><h3 data-i18n="why.2.title">The characters hold together.</h3><p data-i18n="why.2.desc">Same face, same coat, same cat in every shot. Nothing breaks the spell halfway through.</p></li>
+    <li data-reveal><h3 data-i18n="why.3.title">The product gets its moment.</h3><p data-i18n="why.3.desc">It enters when the story needs it, in close-up, so it is wanted rather than announced.</p></li>
+    <li data-reveal><h3 data-i18n="why.4.title">Made by someone who runs ads.</h3><p data-i18n="why.4.desc">The films are written by a Meta Ads specialist, with the placement, the format and the test in mind.</p></li>
   </ul>
 </section>
 
 <!-- ───────────── FAQ ───────────── -->
 <section class="faq" id="faq" aria-labelledby="faq-title">
-  <h2 class="display" id="faq-title" data-lines>Fair<br>questions.</h2>
+  <h2 class="display" id="faq-title" data-lines data-i18n-html="faq.title">Fair<br>questions.</h2>
   <div class="faq__list">
     <div class="qa">
-      <h3><button type="button" aria-expanded="false" aria-controls="qa-1" id="qb-1">How fast is the turnaround?<i aria-hidden="true"></i></button></h3>
-      <div class="qa__panel" id="qa-1" role="region" aria-labelledby="qb-1"><div><p>The three-ad package is delivered in 48 hours. We confirm the start time with you when the brief is agreed, so you know exactly when to expect the films.</p></div></div>
+      <h3><button type="button" aria-expanded="false" aria-controls="qa-1" id="qb-1"><span data-i18n="faq.q1">How fast is the turnaround?</span><i aria-hidden="true"></i></button></h3>
+      <div class="qa__panel" id="qa-1" role="region" aria-labelledby="qb-1"><div><p data-i18n="faq.a1">Video packages are delivered in 48 hours after the brief is agreed. Photos, websites and social posts are quoted with their own timeline based on scope.</p></div></div>
     </div>
     <div class="qa">
-      <h3><button type="button" aria-expanded="false" aria-controls="qa-2" id="qb-2">How many revisions do I get?<i aria-hidden="true"></i></button></h3>
-      <div class="qa__panel" id="qa-2" role="region" aria-labelledby="qb-2"><div><p>One revision is included in the package. If you think you will need more, say so in your message and we will scope it in the quote.</p></div></div>
+      <h3><button type="button" aria-expanded="false" aria-controls="qa-2" id="qb-2"><span data-i18n="faq.q2">How many revisions do I get?</span><i aria-hidden="true"></i></button></h3>
+      <div class="qa__panel" id="qa-2" role="region" aria-labelledby="qb-2"><div><p data-i18n="faq.a2">One revision is included in the package. If you think you will need more, say so in your message and we will scope it in the quote.</p></div></div>
     </div>
     <div class="qa">
-      <h3><button type="button" aria-expanded="false" aria-controls="qa-3" id="qb-3">Which formats can you deliver?<i aria-hidden="true"></i></button></h3>
-      <div class="qa__panel" id="qa-3" role="region" aria-labelledby="qb-3"><div><p>The usual ones for paid social and beyond: 9:16 for Reels, Stories and TikTok, 1:1 for the feed, and 21:9 for the cinematic crop you see on this page. Tell us where the ads will run and we will agree the formats in the quote.</p></div></div>
+      <h3><button type="button" aria-expanded="false" aria-controls="qa-3" id="qb-3"><span data-i18n="faq.q3">Which formats can you deliver?</span><i aria-hidden="true"></i></button></h3>
+      <div class="qa__panel" id="qa-3" role="region" aria-labelledby="qb-3"><div><p data-i18n="faq.a3">The usual ones for paid social and beyond: 9:16 for Reels, Stories and TikTok, 1:1 for the feed, and 21:9 for the cinematic crop you see on this page. Tell us where the ads will run and we will agree the formats in the quote.</p></div></div>
     </div>
     <div class="qa">
-      <h3><button type="button" aria-expanded="false" aria-controls="qa-4" id="qb-4">Who can use the films, and where?<i aria-hidden="true"></i></button></h3>
-      <div class="qa__panel" id="qa-4" role="region" aria-labelledby="qb-4"><div><p>Usage is agreed in writing with your quote, before any work starts. Tell us which channels and countries you plan to advertise in, and for how long, so the terms fit what you need.</p></div></div>
+      <h3><button type="button" aria-expanded="false" aria-controls="qa-4" id="qb-4"><span data-i18n="faq.q4">Who can use the films, and where?</span><i aria-hidden="true"></i></button></h3>
+      <div class="qa__panel" id="qa-4" role="region" aria-labelledby="qb-4"><div><p data-i18n="faq.a4">Usage is agreed in writing with your quote, before any work starts. Tell us which channels and countries you plan to advertise in, and for how long, so the terms fit what you need.</p></div></div>
     </div>
     <div class="qa">
-      <h3><button type="button" aria-expanded="false" aria-controls="qa-5" id="qb-5">Are the films on this page client work?<i aria-hidden="true"></i></button></h3>
-      <div class="qa__panel" id="qa-5" role="region" aria-labelledby="qb-5"><div><p>No. They are concept films made as sample work. Linden &amp; Rose and Rosewater &amp; Crumb are fictional brands created for the films.</p></div></div>
+      <h3><button type="button" aria-expanded="false" aria-controls="qa-5" id="qb-5"><span data-i18n="faq.q5">Are the films on this page client work?</span><i aria-hidden="true"></i></button></h3>
+      <div class="qa__panel" id="qa-5" role="region" aria-labelledby="qb-5"><div><p data-i18n="faq.a5">No. They are concept films made as sample work. Linden &amp; Rose and Rosewater &amp; Crumb are fictional brands created for the films.</p></div></div>
     </div>
     <div class="qa">
-      <h3><button type="button" aria-expanded="false" aria-controls="qa-6" id="qb-6">Do you run the campaign as well?<i aria-hidden="true"></i></button></h3>
-      <div class="qa__panel" id="qa-6" role="region" aria-labelledby="qb-6"><div><p>Meta campaign setup is an optional add-on: structure, audience, pixel and creative testing on Facebook and Instagram. You can also take the films and run them yourself.</p></div></div>
+      <h3><button type="button" aria-expanded="false" aria-controls="qa-6" id="qb-6"><span data-i18n="faq.q6">Do you run the campaign as well?</span><i aria-hidden="true"></i></button></h3>
+      <div class="qa__panel" id="qa-6" role="region" aria-labelledby="qb-6"><div><p data-i18n="faq.a6">Yes: Meta Ads setup and management is one of our four services — campaign structure, audience, pixel and creative testing on Facebook and Instagram. You can also take the assets and run them yourself.</p></div></div>
     </div>
     <div class="qa">
-      <h3><button type="button" aria-expanded="false" aria-controls="qa-7" id="qb-7">How do I start?<i aria-hidden="true"></i></button></h3>
-      <div class="qa__panel" id="qa-7" role="region" aria-labelledby="qb-7"><div><p>Use the form below. Tell us about the brand, the product and where the ads will run, and you will get a quote back. <a href="#contact">Start a project</a>.</p></div></div>
+      <h3><button type="button" aria-expanded="false" aria-controls="qa-7" id="qb-7"><span data-i18n="faq.q7">How do I start?</span><i aria-hidden="true"></i></button></h3>
+      <div class="qa__panel" id="qa-7" role="region" aria-labelledby="qb-7"><div><p data-i18n-html="faq.a7">Use the form below. Tell us about the brand, the product and where the ads will run, and you will get a quote back. <a href="#contact">Start a project</a>.</p></div></div>
     </div>
   </div>
 </section>
 
 <!-- ───────────── CONTACT ───────────── -->
 <section class="contact" id="contact" aria-labelledby="contact-title">
-  <h2 class="contact__title" id="contact-title" data-lines>Let's make<br>people feel<br>something.</h2>
+  <h2 class="contact__title" id="contact-title" data-lines data-i18n-html="contact.title">Let's make<br>people feel<br>something.</h2>
   <div class="contact__grid">
     <div class="contact__side">
-      <p class="contact__lede">Tell us about the brand and the product. You get a quote back, with no obligation.</p>
+      <p class="contact__lede" data-i18n="contact.lede">Tell us about the brand and the product. You get a quote back, with no obligation.</p>
       <ul class="contact__facts">
-        <li><b>3</b><span>AI video ads in the package</span></li>
-        <li><b>48h</b><span>delivery</span></li>
-        <li><b>1</b><span>revision included</span></li>
+        <li><b>3</b><span data-i18n="contact.fact1">AI video ads in the package</span></li>
+        <li><b>48h</b><span data-i18n="contact.fact2">delivery</span></li>
+        <li><b>1</b><span data-i18n="contact.fact3">revision included</span></li>
       </ul>
       <ul class="contact__links" id="contact-links" hidden></ul>
     </div>
     <form class="form" id="project-form" novalidate>
-      <h3>Start a project</h3>
+      <h3 data-i18n="contact.formTitle">Start a project</h3>
       <p class="form__interest" id="form-interest" hidden></p>
-      <div class="field">
-        <label for="f-name">Your name</label>
-        <input id="f-name" name="name" type="text" autocomplete="name" required>
-        <p class="field__error" id="e-name" hidden>Add your name so we know who to reply to.</p>
+      <div class="field field--hp" aria-hidden="true">
+        <label for="f-website-hp" data-i18n="contact.hpLabel">Website</label>
+        <input id="f-website-hp" name="website_hp" type="text" tabindex="-1" autocomplete="off">
       </div>
       <div class="field">
-        <label for="f-email">Email</label>
-        <input id="f-email" name="email" type="email" autocomplete="email" required inputmode="email">
-        <p class="field__error" id="e-email" hidden>Enter an email address like name@brand.com.</p>
+        <label for="f-name" data-i18n="contact.nameLabel">Your name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" maxlength="120" required>
+        <p class="field__error" id="e-name" hidden data-i18n="contact.nameErr">Add your name so we know who to reply to.</p>
       </div>
       <div class="field">
-        <label for="f-brand">Brand or website</label>
-        <input id="f-brand" name="brand" type="text" autocomplete="organization">
+        <label for="f-email" data-i18n="contact.emailLabel">Email</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" maxlength="254" required inputmode="email">
+        <p class="field__error" id="e-email" hidden data-i18n="contact.emailErr">Enter an email address like name@brand.com.</p>
       </div>
       <div class="field">
-        <label for="f-message">What do you sell, and where will the ads run?</label>
-        <textarea id="f-message" name="message" rows="4" required></textarea>
-        <p class="field__error" id="e-message" hidden>Write a line or two about the project.</p>
+        <label for="f-whatsapp" data-i18n="contact.waLabel">WhatsApp (with country code)</label>
+        <input id="f-whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" maxlength="32" placeholder="+351 912 345 678" data-i18n-placeholder="contact.waPlaceholder">
+        <p class="field__error" id="e-whatsapp" hidden data-i18n="contact.waErr">Enter a valid phone number with country code, or leave it blank.</p>
       </div>
+      <div class="field">
+        <label for="f-brand" data-i18n="contact.brandLabel">Brand or website</label>
+        <input id="f-brand" name="brand" type="text" autocomplete="organization" maxlength="160">
+      </div>
+      <div class="field">
+        <label for="f-message" data-i18n="contact.msgLabel">What do you sell, and where will the ads run?</label>
+        <textarea id="f-message" name="message" rows="4" maxlength="4000" required></textarea>
+        <p class="field__error" id="e-message" hidden data-i18n="contact.msgErr">Write a line or two about the project.</p>
+      </div>
+      <p class="form__confirm" id="form-confirm" role="status" aria-live="polite" hidden></p>
       <div class="form__actions">
-        <button class="btn btn--lime" type="submit" data-channel="email" id="send-email">Send by email</button>
-        <button class="btn btn--cream" type="submit" data-channel="whatsapp" id="send-whatsapp">Send on WhatsApp</button>
-        <button class="btn btn--cream" type="button" id="copy-message" hidden>Copy message</button>
+        <button class="btn btn--lime" type="submit" id="send-request" data-i18n="contact.submit">Send request</button>
+        <button class="btn btn--cream" type="button" data-channel="email" id="send-email" data-i18n="contact.sendEmail">Send by email</button>
+        <button class="btn btn--cream" type="button" data-channel="whatsapp" id="send-whatsapp" data-i18n="contact.sendWa">Send on WhatsApp</button>
+        <button class="btn btn--cream" type="button" id="copy-message" data-i18n="contact.copy">Copy message</button>
       </div>
-      <p class="form__note" id="form-note" role="status" aria-live="polite">Sending opens your own email app or WhatsApp with the message ready. Nothing is stored on this site.</p>
+      <p class="form__note" id="form-note" role="status" aria-live="polite" data-i18n="contact.noteInitial">Submit your request directly, or use your email app, WhatsApp, or copy the message.</p>
     </form>
   </div>
 </section>
@@ -582,18 +622,18 @@
 
 <!-- ───────────── FOOTER ───────────── -->
 <footer class="footer">
-  <p class="footer__mark" aria-hidden="true">Studio Isaque B Castro</p>
+  <p class="footer__mark" aria-hidden="true">Castro Creative</p>
   <div class="footer__row">
-    <nav aria-label="Footer">
-      <a href="#work">Work</a>
-      <a href="#services">Services</a>
-      <a href="#process">Process</a>
-      <a href="#studio">Studio</a>
+    <nav aria-label="Footer" data-i18n-aria="nav.footerAria">
+      <a href="#work" data-i18n="nav.work">Work</a>
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#process" data-i18n="nav.process">Process</a>
+      <a href="#studio" data-i18n="nav.about">About</a>
       <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
-    <p class="footer__legal">© 2026 Studio Isaque B Castro. AI video ads and Meta campaign setup, made in Portugal.</p>
-    <a class="btn btn--cream footer__top" href="#top">Back to top</a>
+    <p class="footer__legal" data-i18n="footer.legal">© 2026 Castro Creative. AI video ads and Meta campaign setup, made in Portugal.</p>
+    <a class="btn btn--cream footer__top" href="#top" data-i18n="footer.top">Back to top</a>
   </div>
 </footer>
 
@@ -601,15 +641,15 @@
 <dialog class="player" id="player" aria-labelledby="player-title">
   <div class="player__bar">
     <div>
-      <h2 id="player-title">Film</h2>
+      <h2 id="player-title" data-i18n="player.defaultTitle">Film</h2>
       <p id="player-meta"></p>
     </div>
-    <button class="btn btn--cream player__close" type="button" id="player-close">Close <kbd aria-hidden="true">Esc</kbd></button>
+    <button class="btn btn--cream player__close" type="button" id="player-close" data-i18n-html="player.close">Close <kbd aria-hidden="true">Esc</kbd></button>
   </div>
   <div class="player__frame">
     <video id="player-video" controls playsinline preload="none" width="1280" height="548"></video>
   </div>
-  <p class="player__note">Concept film with sound. Space plays and pauses.</p>
+  <p class="player__note" data-i18n="player.note">Concept film with sound. Space plays and pauses.</p>
 </dialog>
 
 </body>

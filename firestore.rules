@@ -1,0 +1,104 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global default-deny safety net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Admin check: verified Google account matching ADMIN_EMAIL
+    function isAdmin() {
+      return isSignedIn()
+        && request.auth.token.email == 'studioisaquebcastro@gmail.com'
+        && request.auth.token.email_verified == true;
+    }
+
+    function isValidLastReply(reply) {
+      return reply == null
+        || (reply is map
+          && reply.keys().hasAll(['sent_at', 'subject', 'attachment_count'])
+          && reply.keys().hasOnly(['sent_at', 'subject', 'attachment_count'])
+          && reply.sent_at is timestamp
+          && reply.subject is string
+          && reply.subject.size() >= 1
+          && reply.subject.size() <= 200
+          && reply.attachment_count is int
+          && reply.attachment_count >= 0
+          && reply.attachment_count <= 10);
+    }
+
+    function isValidLead(data) {
+      return data.keys().hasAll([
+          'created_at', 'name', 'email', 'whatsapp', 'brand',
+          'theme', 'message', 'status', 'notes', 'last_reply_at'
+        ])
+        && data.keys().hasOnly([
+          'created_at', 'name', 'email', 'whatsapp', 'brand',
+          'theme', 'message', 'status', 'notes', 'last_reply_at', 'last_reply'
+        ])
+        && data.created_at is timestamp
+        && data.name is string && data.name.size() >= 2 && data.name.size() <= 120
+        && data.email is string && data.email.size() >= 5 && data.email.size() <= 254
+        && data.email.matches('^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$')
+        && data.whatsapp is string && data.whatsapp.size() <= 32
+        && data.brand is string && data.brand.size() <= 160
+        && data.theme is string && data.theme.size() <= 200
+        && data.message is string && data.message.size() >= 6 && data.message.size() <= 4000
+        && data.status in ['new', 'replied', 'closed']
+        && data.notes is string && data.notes.size() <= 4000
+        && (data.last_reply_at == null || data.last_reply_at is timestamp)
+        && (!('last_reply' in data) || isValidLastReply(data.last_reply));
+    }
+
+    match /leads/{leadId} {
+      // Only the verified admin may read, list, update, or delete leads.
+      allow get: if isValidId(leadId) && isAdmin();
+      allow list: if isAdmin();
+
+      // Public visitors may submit a new lead only with strict schema & initial state.
+      allow create: if isValidId(leadId)
+        && isValidLead(incoming())
+        && incoming().status == 'new'
+        && incoming().notes == ''
+        && incoming().last_reply_at == null
+        && !('last_reply' in incoming())
+        && incoming().created_at == request.time;
+
+      // Only the verified admin may update status, private notes, last_reply_at, and last_reply.
+      allow update: if isValidId(leadId)
+        && isAdmin()
+        && isValidLead(incoming())
+        && incoming().diff(existing()).affectedKeys().hasOnly(['status', 'notes', 'last_reply_at', 'last_reply'])
+        && incoming().created_at == existing().created_at
+        && incoming().name == existing().name
+        && incoming().email == existing().email
+        && incoming().whatsapp == existing().whatsapp
+        && incoming().brand == existing().brand
+        && incoming().theme == existing().theme
+        && incoming().message == existing().message
+        && (incoming().last_reply_at == existing().last_reply_at || incoming().last_reply_at == request.time)
+        && (!('last_reply' in incoming())
+          || (('last_reply' in existing()) && incoming().last_reply == existing().last_reply)
+          || (incoming().last_reply is map && incoming().last_reply.sent_at == request.time));
+
+      allow delete: if isValidId(leadId) && isAdmin();
+    }
+  }
+}

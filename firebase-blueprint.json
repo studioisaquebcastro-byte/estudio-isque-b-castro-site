@@ -1,0 +1,107 @@
+{
+  "entities": {
+    "Lead": {
+      "title": "Lead",
+      "description": "A project enquiry submitted from the public contact form.",
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the lead was created."
+        },
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 120,
+          "description": "Contact name."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "minLength": 5,
+          "maxLength": 254,
+          "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$",
+          "description": "Contact email address."
+        },
+        "whatsapp": {
+          "type": "string",
+          "maxLength": 32,
+          "description": "Optional WhatsApp number with country code."
+        },
+        "brand": {
+          "type": "string",
+          "maxLength": 160,
+          "description": "Optional brand or website."
+        },
+        "theme": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "Selected quote package or theme (prefill)."
+        },
+        "message": {
+          "type": "string",
+          "minLength": 6,
+          "maxLength": 4000,
+          "description": "Project enquiry details."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["new", "replied", "closed"],
+          "description": "Lead workflow status."
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 4000,
+          "description": "Admin-only private notes."
+        },
+        "last_reply_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of the last reply, or null."
+        },
+        "last_reply": {
+          "type": "object",
+          "description": "Short metadata log of the last email reply sent from admin, or null.",
+          "properties": {
+            "sent_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Server timestamp when the reply was sent."
+            },
+            "subject": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200,
+              "description": "Email subject sent to the lead."
+            },
+            "attachment_count": {
+              "type": "integer",
+              "description": "Number of files attached (0 to 10)."
+            }
+          }
+        }
+      },
+      "required": [
+        "created_at",
+        "name",
+        "email",
+        "whatsapp",
+        "brand",
+        "theme",
+        "message",
+        "status",
+        "notes",
+        "last_reply_at"
+      ]
+    }
+  },
+  "firestore": {
+    "/leads/{leadId}": {
+      "schema": {
+        "$ref": "#/entities/Lead"
+      },
+      "description": "Project enquiry leads submitted via the public form and managed exclusively by the verified admin."
+    }
+  }
+}

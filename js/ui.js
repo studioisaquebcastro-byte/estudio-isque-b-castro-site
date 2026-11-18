@@ -1,4 +1,6 @@
 // Smaller interactions: menu, accordion, reveals, word scrub, marquee speed, tilt, parallax, stacked steps.
+import { t } from './i18n.js';
+
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
 export function initMenu({ lenis }) {
@@ -6,10 +8,11 @@ export function initMenu({ lenis }) {
   const text = btn.querySelector('.chip--menu__text');
   const rest = [document.getElementById('main'), document.querySelector('.footer')];
   let open = false, timer = 0;
+  const syncLabel = () => { text.textContent = open ? t('nav.close') : t('nav.menu'); };
   const set = (on, focusBtn = true) => {
     if (on === open) return;
     open = on; clearTimeout(timer);
-    btn.setAttribute('aria-expanded', String(on)); text.textContent = on ? 'Close' : 'Menu';
+    btn.setAttribute('aria-expanded', String(on)); syncLabel();
     rest.forEach((el) => { el.inert = on; });
     document.documentElement.classList.toggle('is-locked', on);
     lenis && (on ? lenis.stop() : lenis.start());
@@ -19,6 +22,7 @@ export function initMenu({ lenis }) {
   btn.addEventListener('click', () => set(!open));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && open) set(false); });
   document.addEventListener('eibc:navigate', () => set(false, false)); // an anchor link was followed
+  document.addEventListener('cc:langchange', syncLabel);
   matchMedia('(min-width: 1000px)').addEventListener('change', (e) => e.matches && set(false, false));
 }
 
@@ -60,7 +64,8 @@ export function initScrollFX({ lenis, fine }) {
   // manifesto: word-by-word, scrubbed
   const text = document.querySelector('[data-words]');
   if (text) {
-    const words = splitWords(text), n = words.length, last = new Float32Array(n).fill(-1);
+    let words = [], n = 0, last = new Float32Array(0);
+    const prepare = () => { words = splitWords(text); n = words.length; last = new Float32Array(n).fill(-1); };
     const paint = (p) => {
       const head = p * (n + 6);
       for (let i = 0; i < n; i++) {
@@ -68,8 +73,14 @@ export function initScrollFX({ lenis, fine }) {
         if (o !== last[i]) { last[i] = o; words[i].style.setProperty('--o', o); }
       }
     };
+    prepare();
     paint(0);
-    ScrollTrigger.create({ trigger: text, start: 'top 82%', end: 'bottom 55%', onUpdate: (s) => paint(s.progress), onRefresh: (s) => paint(s.progress) });
+    const st = ScrollTrigger.create({ trigger: text, start: 'top 82%', end: 'bottom 55%', onUpdate: (s) => paint(s.progress), onRefresh: (s) => paint(s.progress) });
+    document.addEventListener('cc:langchange', () => {
+      prepare();
+      ScrollTrigger.refresh();
+      paint(st.progress || 0);
+    });
   }
 
   // marquee ribbons speed up with scroll velocity

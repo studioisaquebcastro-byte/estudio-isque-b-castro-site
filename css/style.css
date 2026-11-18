@@ -24,6 +24,10 @@
 .menu__nav a:nth-child(1) span{transition-delay:.12s}.menu__nav a:nth-child(2) span{transition-delay:.17s}.menu__nav a:nth-child(3) span{transition-delay:.22s}.menu__nav a:nth-child(4) span{transition-delay:.27s}.menu__nav a:nth-child(5) span{transition-delay:.32s}
 .menu__nav a:hover,.menu__nav a:focus-visible{color:var(--lime)}
 .menu__foot{display:grid;gap:1rem;justify-items:start;font-size:1rem;margin-top:2rem}
+.menu__lang{display:inline-flex;align-items:center;gap:.15rem;padding:.25rem;border:2px solid var(--cream);border-radius:999px;background:color-mix(in oklab,var(--ink) 25%,var(--cobalt))}
+.menu__lang button{background:transparent;border:0;border-radius:999px;padding:.45rem .8rem;font:700 .88rem/1 var(--display);color:var(--cream);transition:background-color .2s,color .2s}
+.menu__lang button:hover{background:color-mix(in oklab,var(--cream) 18%,transparent)}
+.menu__lang button[aria-pressed="true"]{background:var(--lime);color:var(--ink)}
 .menu :focus-visible{outline-color:var(--lime)}
 html:not(.motion) .menu,html:not(.motion) .menu__nav a span{transition:none}
 html:not(.motion) .menu__nav a span{transform:none}
@@ -111,7 +115,7 @@ html:not(.motion) .ribbon__track{animation:none}
 .service__list--big li::before{display:none}
 .service__list--big b{display:block;font:700 clamp(1.3rem,2vw,1.8rem) var(--display)}
 .service .btn{margin-top:auto}
-@media (min-width:900px){.services__grid{grid-template-columns:1.08fr 1fr}}
+@media (min-width:900px){.services__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* ── process: sticky stacked cards ────────────────────────── */
 .process{background:var(--cream)}
@@ -292,3 +296,11 @@ html.is-locked{overflow:hidden}
 .themes .btn{justify-self:start}
 @media (min-width:900px){.themes{grid-template-columns:minmax(0,.85fr) minmax(0,1fr);align-items:start}.themes__head{position:sticky;top:6rem}}
 @media (prefers-reduced-motion:reduce){.tchip{transition:none}}
+
+/* ── Lead form honeypot & inline confirmation ── */
+.field--hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none}
+.form__confirm{background:var(--lime);color:var(--ink);border:2px solid var(--cream);border-radius:14px;padding:.9rem 1.1rem;font:700 1rem/1.35 var(--display)}
+.form__confirm[hidden]{display:none}
+
+
+

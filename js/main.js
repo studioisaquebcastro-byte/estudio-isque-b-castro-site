@@ -1,5 +1,6 @@
 // Entry point. Everything is progressive: the page is complete and usable before (or without) this file.
 import { SITE } from '../config.js';
+import { initI18n } from './i18n.js';
 import { initSmooth } from './smooth.js';
 import { initHero } from './hero.js';
 import { initWork } from './work.js';
@@ -7,6 +8,8 @@ import { initPlayer } from './modal.js';
 import { initCursor } from './cursor.js';
 import { initForms } from './forms.js';
 import { initMenu, initAccordion, initReveals, initScrollFX } from './ui.js';
+
+initI18n();
 
 const root = document.documentElement;
 const motion = root.classList.contains('motion');
@@ -39,3 +42,4 @@ addEventListener('load', refresh, { once: true });
 document.querySelectorAll('.screen video').forEach((v, _, all) => {
   v.addEventListener('play', () => all.forEach(o => { if (o !== v) o.pause(); }));
 });
+

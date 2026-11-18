@@ -4,10 +4,10 @@
  * Placeholder values (YOUR-DOMAIN, all zeros) are treated as "not set".
  */
 export const SITE = {
-  name: "Estúdio Isaac B. Castro",
+  name: "Castro Creative",
 
   // Where "Send by email" delivers the project form.
-  email: "hello@YOUR-DOMAIN.com",
+  email: "studioisaquebcastro@gmail.com",
 
   // WhatsApp number in international format, digits only (country code first, no + or spaces).
   // Example for Portugal: "351912345678"

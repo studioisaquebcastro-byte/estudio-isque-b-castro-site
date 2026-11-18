@@ -1,4 +1,6 @@
 // Custom "Play" cursor + magnetic buttons. Fine pointers with motion only; touch and keyboard users never see it.
+import { t } from './i18n.js';
+
 export function initCursor() {
   const { gsap } = window;
   const cursor = document.getElementById('cursor');
@@ -10,7 +12,7 @@ export function initCursor() {
   addEventListener('pointermove', (e) => { x(e.clientX); y(e.clientY); }, { passive: true });
 
   document.querySelectorAll('.film__play').forEach((el) => {
-    el.addEventListener('pointerenter', () => { label.textContent = 'Play'; cursor.classList.add('is-on'); });
+    el.addEventListener('pointerenter', () => { label.textContent = t('cursor.play'); cursor.classList.add('is-on'); });
     el.addEventListener('pointerleave', () => cursor.classList.remove('is-on'));
     el.addEventListener('click', () => cursor.classList.remove('is-on'));
   });
