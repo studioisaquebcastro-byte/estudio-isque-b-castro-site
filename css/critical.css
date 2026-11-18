@@ -1,0 +1,119 @@
+/* critical.css — above-the-fold styles. Inlined into index.html by tools/inline-critical.py (edit here, then re-run it). */
+@font-face{font-family:"Bricolage";src:url(/assets/fonts/bricolage-grotesque.woff2) format("woff2");font-weight:200 800;font-stretch:75% 100%;font-display:swap}
+@font-face{font-family:"Newsreader";src:url(/assets/fonts/newsreader.woff2) format("woff2");font-weight:200 800;font-display:swap}
+@property --n{syntax:"<integer>";inherits:false;initial-value:0}
+@property --p{syntax:"<number>";inherits:true;initial-value:0}
+:root{
+  --cream:#FBF1DE;--ink:#15110E;--vermilion:#FF4321;--cobalt:#2340FF;--lime:#D6FF3D;--pink:#FF5CA8;
+  --display:"Bricolage","Arial Narrow",Impact,sans-serif;--text:"Newsreader",Georgia,"Times New Roman",serif;
+  --gut:clamp(1rem,3.2vw,3.5rem);--ease:cubic-bezier(.2,.8,.2,1);--out:cubic-bezier(.16,1,.3,1);
+  --hard:4px 4px 0 var(--ink);--line:2px solid var(--ink);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:5rem;overflow-x:clip}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 clamp(1.06rem,.98rem + .3vw,1.3rem)/1.5 var(--text);-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3,p,ul,ol,figure{margin:0}ul,ol{padding:0;list-style:none}
+img,video,canvas{display:block;max-width:100%;height:auto}
+a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:6px}
+.skip{position:fixed;left:1rem;top:-5rem;z-index:200;background:var(--ink);color:var(--cream);padding:.7rem 1rem;border-radius:999px;font:600 1rem var(--display)}
+.skip:focus{top:1rem}
+.display{font:800 clamp(3rem,9.4vw,10.5rem)/.88 var(--display);font-stretch:75%;letter-spacing:-.02em;text-wrap:balance}
+
+/* buttons + chips: sticker language (ink outline, hard offset shadow) */
+.btn,.chip{font:600 1rem/1 var(--display);text-decoration:none;display:inline-flex;align-items:center;gap:.55rem;border:var(--line);border-radius:999px;white-space:nowrap}
+.btn{padding:1.02rem 1.5rem;box-shadow:var(--hard);transition:translate .25s var(--ease),box-shadow .25s var(--ease),background-color .25s}
+.btn:hover{translate:-2px -2px;box-shadow:7px 7px 0 var(--ink)}
+.btn:active{translate:2px 2px;box-shadow:1px 1px 0 var(--ink)}
+.btn--ink{background:var(--ink);color:var(--cream);box-shadow:4px 4px 0 var(--vermilion)}
+.btn--ink:hover{box-shadow:7px 7px 0 var(--vermilion)}
+.btn--ghost{background:transparent}.btn--ghost:hover{background:var(--lime)}
+.btn--lime{background:var(--lime);color:var(--ink)}
+.btn--cream{background:var(--cream);color:var(--ink)}
+
+.site-header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:.6rem;padding:.9rem var(--gut);pointer-events:none}
+.site-header>*{pointer-events:auto}
+.chip{height:2.9rem;padding:0 1.05rem;font-size:.95rem}
+.chip--brand{background:var(--ink);color:var(--cream);border-color:var(--cream);font-weight:700;letter-spacing:-.01em}
+.chip__dot{width:.7rem;height:.7rem;border-radius:50%;background:var(--vermilion);flex:none}
+.chip--nav{background:var(--cream);gap:0;padding:0 .35rem;display:none}
+.chip--nav a{text-decoration:none;padding:.55rem .8rem;border-radius:999px;transition:background-color .2s}
+.chip--nav a:hover{background:var(--lime)}
+.site-header__end{display:flex;gap:.5rem}
+.chip--cta{background:var(--lime);display:none}
+.chip--menu{background:var(--cream)}
+.chip--menu__bars{display:grid;gap:5px;width:18px}
+.chip--menu__bars i{height:2px;background:var(--ink);transition:transform .35s var(--ease)}
+[aria-expanded=true] .chip--menu__bars i:first-child{transform:translateY(3.5px) rotate(45deg)}
+[aria-expanded=true] .chip--menu__bars i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+@media (min-width:560px){.chip--cta{display:inline-flex}}
+@media (min-width:1000px){.chip--nav{display:inline-flex}.chip--menu{display:none}}
+.menu[hidden]{display:none}
+
+/* preloader: pure CSS (counter via @property), so it can never get stuck if JS fails */
+.preloader{display:none}
+.preload .preloader{display:grid;position:fixed;inset:0;z-index:100;background:var(--vermilion);color:var(--ink);grid-template-rows:auto 1fr auto;padding:1.2rem var(--gut);font:700 1rem var(--display);animation:pl-out .65s cubic-bezier(.7,0,.2,1) .95s forwards}
+.preloader__count{align-self:end;font:800 min(46vw,62vh)/.8 var(--display);font-stretch:75%;letter-spacing:-.04em;margin-left:-.04em}
+.preloader__count span{font-size:0}
+.preloader__count::after{counter-reset:n var(--n);content:counter(n);animation:pl-count .9s cubic-bezier(.3,0,.2,1) forwards}
+.preloader__line{padding-top:.6rem;border-top:var(--line)}
+@keyframes pl-count{to{--n:100}}
+@keyframes pl-out{to{transform:translateY(-101%);visibility:hidden}}
+
+/* hero — base = static flow layout (mobile, reduced motion, no JS) */
+.hero__stage{--p:0;position:relative;padding:6.2rem var(--gut) 2.5rem;display:grid;gap:1.6rem}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.hero__title{white-space:nowrap;font:800 clamp(3rem,17.2vw,9rem)/.86 var(--display);font-stretch:75%;letter-spacing:-.025em}
+.hero__line{display:block;overflow:clip;overflow-clip-margin:.06em;padding-block:.07em;margin-block:-.07em}
+.hero__line>span{display:inline-block}
+.hero__copy{max-width:31rem;display:grid;gap:1.3rem}
+.hero__lede strong{font-family:var(--display);font-weight:700;letter-spacing:-.01em}
+.hero__actions{display:flex;flex-wrap:wrap;gap:.8rem}
+.hero__frame{position:relative;aspect-ratio:16/9;border-radius:22px;overflow:hidden;border:var(--line);background:var(--ink);rotate:-1.5deg;margin-top:1rem;box-shadow:8px 8px 0 var(--cobalt)}
+.hero__poster,.hero__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero__video{opacity:0;transition:opacity .6s}.hero__video.is-on{opacity:1}
+.hero__tag{position:absolute;left:.8rem;bottom:.8rem;background:var(--cream);border:var(--line);border-radius:999px;padding:.35rem .7rem;font:600 .8rem var(--display)}
+.hero__cue{display:none}
+.sticker{position:absolute;z-index:3;pointer-events:none;font-family:var(--display)}
+.sticker--48{right:var(--gut);top:5.4rem;width:clamp(5.6rem,24vw,8.5rem);aspect-ratio:1;background:var(--lime);border:var(--line);border-radius:50%;display:grid;place-items:center;rotate:10deg}
+.sticker__ring{position:absolute;inset:0;animation:spin 22s linear infinite}
+.sticker__ring text{font:700 17.5px var(--display);letter-spacing:.02em;fill:var(--ink)}
+.sticker--48 b{font:800 clamp(1.7rem,7vw,2.6rem)/1 var(--display);font-stretch:75%}
+.sticker--pack{display:none;background:var(--pink);border:var(--line);border-radius:999px;padding:.6rem 1rem;font-weight:700;font-size:1rem;rotate:-7deg;box-shadow:var(--hard)}
+@media (max-width:899px){.sticker--48{top:auto;bottom:calc((100vw - 2*var(--gut))*.5625 - .6rem);right:calc(var(--gut) + .4rem)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sticker__ring{transform-origin:50% 50%}
+html:not(.motion) .sticker__ring{animation:none}
+
+/* headline entrance: one orchestrated moment, CSS-only */
+.motion .hero__line>span{animation:line-in 1s var(--out) both;animation-delay:calc(var(--d0,.05s) + var(--i,0)*.09s)}
+.preload .hero__line>span{--d0:1.15s}
+.hero__line--2{--i:1}.hero__line--3{--i:2}
+@keyframes line-in{from{transform:translateY(112%) rotate(4deg);font-weight:200}to{transform:none;font-weight:800}}
+.motion .hero__copy,.motion .hero__frame,.motion .sticker{animation:pop .9s var(--out) backwards;animation-delay:calc(var(--d0,.05s) + .35s)}
+.preload .hero__copy,.preload .hero__frame,.preload .sticker{--d0:1.15s}
+@keyframes pop{from{scale:.86}to{scale:1}}
+
+/* hero — pinned kinetic layout (desktop + motion). --p (0→1) is written by js/hero.js from scroll. */
+@media (min-width:900px){
+  .hero__title{font-size:min(13.4vw,23.5vh)}
+  .motion .hero{height:230vh}
+  .motion .hero__stage{position:sticky;top:0;height:100vh;height:100svh;display:block;padding:0;overflow:clip;
+    background:color-mix(in oklab,var(--ink) calc(clamp(0,(var(--p) - .35)*2.2,1)*100%),var(--cream))}
+  .motion .hero__title{position:absolute;left:var(--gut);top:max(5.4rem,9vh);opacity:calc(1 - var(--p)*2.4)}
+  .motion .hero__line{will-change:transform;transform:translateX(calc(var(--p)*var(--dir,-1)*38vw))}
+  .motion .hero__line--2{--dir:1}
+  .motion .hero__copy{position:absolute;left:var(--gut);bottom:clamp(1.6rem,5vh,3.2rem);opacity:calc(1 - var(--p)*3);translate:0 calc(var(--p)*6vh)}
+  .motion .hero__frame{--fs:.37;--fx:27.5vw;--fy:22vh;position:absolute;left:0;top:50%;width:100vw;margin:0;aspect-ratio:21/9;max-height:100svh;rotate:none;box-shadow:none;
+    border-width:calc(2px*(1 - var(--p))/var(--fs));border-radius:calc(54px*(1 - var(--p)));will-change:transform;
+    transform:translate(calc(var(--fx)*(1 - var(--p))),calc(-50% + var(--fy)*(1 - var(--p)))) rotate(calc(-4deg*(1 - var(--p)) + var(--skew,0deg))) scale(calc(var(--fs) + (1 - var(--fs))*var(--p)))}
+  .motion .hero__tag{font-size:calc(.8rem/var(--fs));left:calc(.8rem/var(--fs));bottom:calc(.8rem/var(--fs));padding:.35em .7em;border-width:calc(2px/var(--fs));opacity:calc(1 - var(--p)*4)}
+  .motion .sticker{opacity:calc(1 - var(--p)*4)}
+  .motion .sticker--48{right:7vw;top:13vh;width:clamp(7.5rem,11vw,11rem)}
+  .motion .sticker--pack{display:block;left:80vw;top:47vh}
+  .motion .hero__cue{display:flex;align-items:center;gap:.6rem;position:absolute;right:var(--gut);bottom:1.4rem;font:600 .9rem var(--display);opacity:calc(1 - var(--p)*6)}
+  .hero__cue i{width:2px;height:2.2rem;background:var(--ink);transform-origin:top;animation:cue 1.8s var(--ease) infinite}
+  html:not(.motion) .hero__stage{grid-template-columns:1fr 1fr;align-items:end;padding-top:7rem}
+  html:not(.motion) .hero__title{grid-column:1/-1}
+}
+@keyframes cue{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO owner: replace YOUR-DOMAIN.com with the live domain
+Sitemap: https://YOUR-DOMAIN.com/sitemap.xml
